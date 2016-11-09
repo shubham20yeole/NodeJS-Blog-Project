@@ -1,0 +1,49 @@
+<html>
+	<head>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/it/b/be/Pace_plc-logo.png" width="100%">
+	<title>BizzList2 | webapp</title>
+
+  <!-- ****************************************CSS IMPORTS**************************************** -->
+
+  <link rel="stylesheet" type="text/css" href="/css/header.css">
+  <link rel="stylesheet" type="text/css" href="/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/css/member.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+<body style="margin:0;padding:0;">
+<div style="padding: 10px; text-align: right;">
+<a href="https://www.linkedin.com/in/shubhamyeole" target="_blank"><img src="images/linkedin.jpg"  width="22" height="22" /></a>
+<a href="https://github.com/shubham20yeole" target="_blank"><img src="images/github.jpg"  width="22" height="22" /></a>
+<a href="https://www.facebook.com/sy06736n" target="_blank"><img src="images/fb.jpg"  width="22" height="22" /></a>
+<a href="http://stackoverflow.com/users/5451749/shubham-yeole" target="_blank"><img src="images/stackoverflow.jpg"  width="22" height="22" /></a>
+</head>
+</div>
+
+        <ul class="classul">
+            
+            <li><a href="random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24" target="_blank">Current Users</a></li>   
+            <li><a href="https://shubhamjavaworld.herokuapp.com/" id="stayawake" target="_blank">Website</a></li>
+            <li> <a href="/auth/linkedin" class="btn btn-default">LinkedIn</a></li>
+            <li> <a href="/blog" class="btn btn-default">Ask Question?</a></li>
+
+            <% if(session=='false'){%>
+            <li>
+               <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up / Sign In</a>
+            </li>
+            <%}else{%>
+            <li>
+               <a href="/logout/">Logout</a>
+            </li>
+            <%}%>
+        </ul>
+    
+</body>
+</html>
+

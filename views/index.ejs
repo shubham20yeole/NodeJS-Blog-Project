@@ -1,0 +1,57 @@
+<% include partials/header %>
+
+
+<% if(errors){ %>
+<% errors.forEach(function(errors){%>
+	<%= errors.msg %>
+	
+<%}) %>
+<%}%>
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+</head>
+<body>
+<div class="parallax"><p class="errmsg animated rubberBand"><%=errmsg %></p>
+</div>
+ <form method="POST" action="/users/add">
+
+<div id="accordion">
+  <h3>Section 1</h3>
+  <div>
+    <p>
+   <input type="text" name="firstname" placeholder="First Name">
+    </p>
+  </div>
+  <h3>Section 2</h3>
+  <div>
+    <p>
+   		<input type="text" name="lastname" placeholder="Last Name"><br>
+
+    </p>
+  </div>
+  <h3>Section 3</h3>
+  <div>
+    <p>
+   		<input type="text" name="email" placeholder="Email address"><br>
+   		<input type="text" name="phone" placeholder="Phone Number"><br>
+   		<input type="text" name="website" placeholder="Website"><br>
+
+    </p>
+  </div>
+  <h3>Section 4</h3>
+  <div><p>
+		<input type="text" name="password" placeholder="Password"><br>
+		<input type="submit" value="Submit"><br>
+    </p></div>
+
+</div>
+   </form>
+
+   
+<% include partials/footer %>

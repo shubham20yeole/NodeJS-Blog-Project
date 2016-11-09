@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<% include partials/header %>
+<CENTER>
+	<p style="color: #F44336; font-size: 3em;">Welcome <span style="color: green; font-size: 35px;"> <b><%= users.firstname %> <%= users.lastname %></b></span> to BizzList II project. </p>
+	<h2 style="color: #D50000;">You are logged in successfully.....</h2>
+</CENTER>
+
+<div id="" style="padding: 1% 10% 10% 10%; overflow:scroll; height:400px;">  
+	<pre>
+		<code class="javascript">
+app.delete('/users/delete/:id', function(req, res){
+	console.log(req.params.id);
+	db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+		if(err){
+			console.log("err");
+		}
+		res.redirect('/');
+	});
+});
+		</code>
+	</pre>
+</div>
+
+
