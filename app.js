@@ -337,6 +337,13 @@ app.get('/blog/', requireLogin, function(req, res) {
   
 });
 
+app.get('/googlemap/', function(req, res) {
+
+    res.render('googlemap',{session : "true",users: req.session.users});
+     
+  
+});
+
 app.post('/login', function(req, res) {
   db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
