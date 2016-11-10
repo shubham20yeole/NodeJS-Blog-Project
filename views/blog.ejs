@@ -15,8 +15,21 @@
 <button style="float: right;" id="submit">Save Post</button>
 <form method="post" action="addblog">
     <input type="text" name="title" id="title" placeholder="Title">
-    <input type="text" name="long" id="long" VALUE="">
-     <input type="text" name="lat" id="lat" VALUE="">
+    <input type="hidden" name="category" id="categoryinp" value="other" placeholder="category">
+      <select id="category">
+        <option value="other">Select Category</option>
+        <option value="Java">Java</option>
+        <option value="NodeJs">NodeJs</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="jQuery">jQuery</option>
+        <option value="AngularJS">AngularJS</option>
+        <option value="AJAX">AJAX</option>
+      </select>
+    <input type="hidden" name="like" id="like" VALUE="0">
+    <input type="hidden" name="dislike" id="dislike" VALUE="0">
+    <input type="hidden" name="views" id="views" VALUE="0">
+    <input type="hidden" name="long" id="long" VALUE="">
+    <input type="hidden" name="lat" id="lat" VALUE="">
     <textarea style="display:none;" rows="3" cols="43" name="blogdata" id="blogdata" ></textarea>
     <input type="submit"  style="display:none;" id="saveblog" value="Save Blog">
     </form>
@@ -24,15 +37,15 @@
 
 <div class="input_fields_wrap">
     <button class="add_field_button">Add More Fields</button><br>
-    <textarea rows="3" cols="43" id="cont0" class="cont"></textarea>
-    <textarea rows="3" cols="43" id="code0" class="code" ></textarea>
+    <textarea rows="3" cols="43" id="cont0" class="cont" placeholder="Section Description"></textarea>
+    <textarea rows="3" cols="43" id="code0" class="code" placeholder="Section Code"></textarea>
 </div>
 <div id="preview">
 	
 </div>
 
     <div id="sample"></div>
-		<p id="p-id-0">c</id>
+		<p id="p-id-0"></id>
 		<pre id="pre-id-0"><code class="javascript" id="code-id-0"></code></pre>
 
 </div>

@@ -31,7 +31,7 @@ $("#saveblog").delay(1000).click();
         e.preventDefault();
         if(x < max_fields){ //max input box allowed 
             x++;  //text box increment
-            $(wrapper).append('<div><textarea rows="3" cols="44" id="cont'+count+'" class="cont"></textarea><textarea rows="3" cols="44" id="code'+count+'" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div>'); //add input box
+            $(wrapper).append('<div><textarea rows="3" cols="44" id="cont'+count+'" placeholder="Section Description" class="cont"></textarea><textarea rows="3" cols="44" id="code'+count+'" placeholder="Section Code" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div>'); //add input box
 
             var codecontentss = $("#pre-id-0").clone().attr("id", "pre-id-"+count);
             var blogcontent = $("#p-id-0").clone().attr("id", "p-id-"+count).text('');
@@ -64,6 +64,10 @@ $("#saveblog").delay(1000).click();
     $('#code-id-'+idcode).text($(this).val());
   });
 
+$(document).on("change","#category",function() { 
+        var category = $(this).val();
+        $('#categoryinp').val($(this).val());
+    });
 
  function get_numbers(input) {
     return input.match(/[0-9]+/g);

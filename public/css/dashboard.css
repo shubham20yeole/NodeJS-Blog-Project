@@ -150,3 +150,6 @@ background-color:#faf8fb;box-shadow: 10px 5px 5px #7c7b7d;
 font-family: 'Bitter', serif;
  color: black; font-size: 12px;
 }
+.likeUser{ color: red; width: 60%;}
+.dislikeUser{ color: red; width: 60%;}
+.addspacing{ float: right; color: green; margin-top: 5px;}

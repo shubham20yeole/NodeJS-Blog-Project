@@ -198,21 +198,56 @@ function regLogFun(){
 }
 
 
-app.delete('/users/delete/:id', function(req, res){
-  console.log(req.params.id);
-  db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
-    if(err){
-      console.log("err");
-    }
-    res.redirect('/');
-  });
-});
+// app.delete('/users/delete/:id', function(req, res){
+//   console.log(req.params.id);
+//   db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+//     if(err){
+//       console.log("err");
+//     }
+//     res.redirect('/');
+//   });
+// });
 
 app.get('/users/delete/:id', function(req, res){
   console.log(req.params.id);
   // db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
-      res.send(req.params.id);
+      res.send(req.params.id+" Test");
   // });
+});
+
+app.get('/users/like/:id', function(req, res){
+  // console.log(req.params.id);
+  var count = 0;
+   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
+    console.log(blog.like+" , "+count);
+    count = blog.like;
+    count++;
+     db.blog.update({ _id: ObjectId(req.params.id)}, {$set:{like: count}}, function (err, result) {
+       res.send(""+count);
+
+    });
+  });
+  });
+app.get('/users/dislike/:id', function(req, res){
+  // console.log(req.params.id);
+  var count = 0;
+   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
+    console.log(blog.dislike+" , "+count);
+    count = blog.dislike;
+    count++;
+     db.blog.update({ _id: ObjectId(req.params.id)}, {$set:{dislike: count}}, function (err, result) {
+       res.send(""+count);
+
+  
+  });
+    });
+   
+    //  db.blog.findOne({_id: ObjectId(req.params.id)}, function(err, blog) {
+  //   console.log(blog.like);
+  // });
+  //  blog.update({_id: req.params.id}, {$set:{like: 1}});   
+
+  //   res.send(req.params.id);
 });
 
 app.get('/searching', function(req, res){
@@ -296,6 +331,10 @@ app.post('/addblog/', function(req, res){
 console.log("success");
     var newBlog = {
       title: req.body.title,
+      category: req.body.category,
+      like: req.body.like,
+      dislike: req.body.dislike,
+      views: req.body.views,
       long: req.body.long,
       lat: req.body.lat,
       name: req.session.users.firstname +" "+req.session.users.lastname,
