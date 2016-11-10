@@ -33,6 +33,9 @@ $(document).ready(function(){
         "bJQueryUI": true,
         "iDisplayLength": 2 
     });
+	 	 $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
+	 	 $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
+
 })
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
@@ -40,7 +43,6 @@ $(document).ready(function(){
 </head>
 <style></style>
 <div id="addpadding">
-
 <table class="currentuxsers" id="ustable">
     <thead>
         <tr>

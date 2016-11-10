@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	$(".likeUser").on('click', likeUser);
   $(".dislikeUser").on('click', dislikeUser);
-	 
 })
 
 function likeUser(){
@@ -23,3 +22,8 @@ function dislikeUser(){
 
       }); 
 }
+
+$(document).on("keyup","#searchinp",function() { 
+      var id = $(this).val();
+    $('input').val(id);
+  });

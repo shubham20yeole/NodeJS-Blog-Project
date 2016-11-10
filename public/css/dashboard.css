@@ -12,7 +12,39 @@ body{
     border-collapse: collapse;
     width: 100%;
 }
-
+.searchInput{
+    width: 330px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('http://advantagejuristbyra.se/wp-content/themes/Advantage_theme/img/search.png');
+    background-size: 30px 30px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.searchInput:focus {
+    width: 900px;
+}
+.selectEntry{
+   width: 330px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('https://cdn0.iconfinder.com/data/icons/bicon/24/circle_checkmark_complete_finish_select_done-256.png');
+    background-size: 30px 30px;
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    padding: 5px 10px 5px 30px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
 .currentusers th{
   padding: 8px;
     text-align: left;
