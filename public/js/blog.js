@@ -10,7 +10,7 @@ $(document).ready(function() {
      var finalText = $("#final").text();
         for(i=0;i<count; i++){
 
-          var temp = '<p id="contenttext">'+$("#p-id-"+i).text()+'</p>' + '<br><br><pre><code class="javascript">'+$("#code-id-"+i).text()+'</code></pre><br><br>';
+          var temp = '<p class="contenttext" id="contenttext">'+$("#p-id-"+i).text()+'</p>' + '<pre><code class="javascript">'+$("#code-id-"+i).text()+'</code></pre>';
 
           finalText = finalText + temp;
 

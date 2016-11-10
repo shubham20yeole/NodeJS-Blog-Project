@@ -15,6 +15,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
 
   <!-- ****************************************My PLUGINs**************************************** -->
@@ -52,7 +53,9 @@ $(document).ready(function(){
     <tbody>
 <% blog.forEach(function(blog){%>
 	<tr id="scrollable" class="scrollables">
-		<td style="width:10%"><%= blog.name %><br>Category: <%= blog.category %></td>
+		<td style="width:10%">
+		<%= blog.name %><br>Category: <%= blog.category %></td>
+
 		<td style="width:10%">
 		<button class="likeUser" data-id="<%= blog._id %>"><img src="images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>
 
@@ -63,7 +66,8 @@ $(document).ready(function(){
 		</td>
 
 		<td style="width:5%"><a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="https://bestanimations.com/Earth&Space/Earth/earth-spinning-rotating-animation-40.gif" width="42" height="42"></a></td>
-		<td><div class="scrollable"><h1><%= blog.title %></h1><%- blog.data %></div></td>
+
+		<td><div class="scrollable"><p class="title"><%= blog.title %></p><%- blog.data %></div></td>
 	</tr>
 <%}) %>
     </tbody>        
