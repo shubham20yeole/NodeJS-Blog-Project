@@ -294,10 +294,10 @@ console.log("success");
     var newBlog = {
       data: req.body.blogdata
     }
-    // db.blog.insert(newBlog, function(err, result){
-    //   if(err){
-    //     console.log(err);
-    //   }
+    db.blog.insert(newBlog, function(err, result){
+      if(err){
+        console.log(err);
+      }
     res.redirect('/dashboard');
   });
 });
