@@ -246,6 +246,7 @@ app.use(function(req, res, next) {
 });
 function requireLogin (req, res, next) {
   if (!req.users) {
+    errmsg = "Please login to use this feature";
     res.redirect('/');
   } else {
     next();
