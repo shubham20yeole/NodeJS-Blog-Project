@@ -256,7 +256,9 @@ function requireLogin (req, res, next) {
 app.get('/dashboard', requireLogin, function(req, res) {
   db.blog.find(function (err, docs) {
     res.render("dashboard.ejs",{
-    blog: docs
+    blog: docs,
+    users: req.session.users,
+    session: "true"
   });
   } )
 });
@@ -292,6 +294,10 @@ app.post('/addblog/', function(req, res){
   
 console.log("success");
     var newBlog = {
+      title: req.body.title,
+      long: req.body.long,
+      lat: req.body.lat,
+      name: req.session.users.firstname +" "+req.session.users.lastname,
       data: req.body.blogdata
     }
     db.blog.insert(newBlog, function(err, result){

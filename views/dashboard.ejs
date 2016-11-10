@@ -1,10 +1,15 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
+<% include partials/header %>
+<link href="/css/admin.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/datatable.css">
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-<link rel="stylesheet" type="text/css" href="/css/datatable.css">
-
   <script src="js/datatable.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
 $(document).ready(function(){
@@ -16,59 +21,27 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
 </script>
+</head>
 
-  <script>hljs.initHighlightingOnLoad();</script>
+<div id="addpadding">
 
-<% include partials/header_1.html %>
-    <div id="sample"></div>
 <table class="currentuxsers" id="ustable">
     <thead>
         <tr>
-		<th>Delete</th>
+		<th>Name</th>
+		<th>Blog</th>
         </tr>
     </thead>
 
     <tbody>
 <% blog.forEach(function(blog){%>
-	<tr id="f">
-		<td><%- blog.data %></td>
+	<tr id="scrollable" class="scrollables">
+		<td><%= blog.name %> <%= blog.long %> <%= blog.lat %></td>
+		<td><div class="scrollable"><h1><%= blog.title %></h1><%- blog.data %></div></td>
 	</tr>
 <%}) %>
     </tbody>        
 </table>
-<CENTER>
-	<p style="color: #F44336; font-size: 3em;">Welcome <span style="color: green; font-size: 35px;"> <b><%= users.firstname %> <%= users.lastname %></b></span> to BizzList II project. </p>
-	<h2 style="color: #D50000;">You are logged in successfully.....</h2>
-</CENTER>
-
-<div id="" style="padding: 1% 10% 10% 10%; overflow:scroll; height:400px;">  
-	<pre>
-		<code class="javascript">
-app.delete('/users/delete/:id', function(req, res){
-	console.log(req.params.id);
-	db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
-		if(err){
-			console.log("err");
-		}
-		res.redirect('/');
-	});
-});
-		</code>
-	</pre>
 </div>
-
-
-<script>
-
-function appendTable(data){
-		data = $("<div />").html(data).text();
-        $("#sample").append(data);
-
-}
-
-$(document).ready(function() {
-
-
-
-});
-</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ $(document).ready(function() {
     var add_button      = $(".add_field_button"); //Add button ID
     
     var x = 1, count=1; //initlal text box count
-
+    initGeolocation();
     $(document).on("click","#submit",function() { 
      var finalText = $("#final").text();
         for(i=0;i<count; i++){
@@ -68,3 +68,28 @@ $("#saveblog").delay(1000).click();
  function get_numbers(input) {
     return input.match(/[0-9]+/g);
 }
+
+  function initGeolocation()
+     {
+        if( navigator.geolocation )
+        {
+           // Call getCurrentPosition with success and failure callbacks
+           navigator.geolocation.getCurrentPosition( success, fail );
+        }
+        else
+        {
+           alert("Sorry, your browser does not support geolocation services.");
+        }
+     }
+
+     function success(position)
+     {
+
+         document.getElementById('long').value = position.coords.longitude;
+         document.getElementById('lat').value = position.coords.latitude
+     }
+
+     function fail()
+     {
+        // Could not obtain location
+     }
