@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 		<td style="width:5%"><a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="https://bestanimations.com/Earth&Space/Earth/earth-spinning-rotating-animation-40.gif" width="42" height="42"></a></td>
 
-		<td><div class="scrollable"><p class="title"><%= blog.title %></p><%- blog.data %></div></td>
+		<td><div style="box-shadow: inset 0 0 0.7em gold; padding: 1% 2% 4% 2%; background-color: #fbf4fd;"><p class="title"><%= blog.title %></p><hr><div class="scrollable"><%- blog.data %></div></div></td>
 	</tr>
 <%}) %>
     </tbody>        
