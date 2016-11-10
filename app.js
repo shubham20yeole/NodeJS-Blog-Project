@@ -6,12 +6,14 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 // var db = mongojs('mongodb://ds143717.mlab.com:43717/shubham', ['users']);
-var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', ['users'])
+var collections = ["users", "blog"]
+
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', collections)
 
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
-
+var blog=db.collection('blog');
 var session = require('client-sessions');
 /*var logger = function(req, res, next){
 	console.log("Logging...");
@@ -74,16 +76,7 @@ app.get('/', function(req, res){
 	
 });
 
-app.get('/random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24/', function(req, res){
-	db.users.find(function (err, docs) {
-   	res.render("admin.ejs",{
-		errmsg : errmsg,
-		users: docs,
-     session : "false"
-	});
-	} )
-	
-});
+
 
 // ********************************************************LINKEDIN*******************************************
 
@@ -233,28 +226,7 @@ app.get('/ajax/', function(req, res) {
 });
 
 
-app.get('/dashboard', function(req, res) {
-  if (req.session && req.session.users) {   // Check if session exists
-    // lookup the user in the DB by pulling their email from the session
-    db.users.findOne({ email: req.session.users.email }, function (err, users) {
-      if (!users) {
-        // if the user isn't found in the DB, reset the session info and
-        // redirect the user to the login page
-        errmsg = 'Your Session Has Timed Out user not present in db';
-        res.redirect('/');
-      } else {
-        // expose the user to the template
-        res.locals.users = users;
- 
-        // render the dashboard page
-        res.render('dashboard.ejs',{session : "true", users: users});
-      }
-    });
-  } else {
-    errmsg = 'Your Session Has Timed Out actually timeout';
-        res.redirect('/');
-  }
-});
+
 
 app.use(function(req, res, next) {
   if (req.session && req.session.users) {
@@ -282,9 +254,22 @@ function requireLogin (req, res, next) {
 
 
 app.get('/dashboard', requireLogin, function(req, res) {
-  res.render('dashboard.ejs');
+  db.blog.find(function (err, docs) {
+    res.render("dashboard.ejs",{
+    blog: docs
+  });
+  } )
 });
-
+app.get('/random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24/', function(req, res){
+  db.users.find(function (err, docs) {
+    res.render("admin.ejs",{
+    errmsg : errmsg,
+    users: docs,
+     session : "false"
+  });
+  } )
+  
+});
 app.get('/logout/', function(req, res) {
 	console.log("I am here");
 
@@ -303,24 +288,17 @@ app.use(session({
 }));
 
 
-app.post('/users/blog', function(req, res){
-  
+app.post('/addblog/', function(req, res){
   
 console.log("success");
     var newBlog = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      phone: req.body.phone,
-      website: req.body.website,
-      password: req.body.password,
-      type: 'user',
+      data: req.body.blogdata
     }
-    db.users.insert(newBlog, function(err, result){
-      if(err){
-        console.log(err);
-      }
-    res.redirect('/');
+    // db.blog.insert(newBlog, function(err, result){
+    //   if(err){
+    //     console.log(err);
+    //   }
+    res.redirect('/dashboard');
   });
 });
 

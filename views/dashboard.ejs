@@ -2,11 +2,40 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="/css/datatable.css">
 
+  <script src="js/datatable.js"></script>
+
+<script>
+$(document).ready(function(){
+	 $("#ustable").dataTable({
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": true
+    });
+})
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
 
   <script>hljs.initHighlightingOnLoad();</script>
 
-<% include partials/header %>
+<% include partials/header_1.html %>
+    <div id="sample"></div>
+<table class="currentuxsers" id="ustable">
+    <thead>
+        <tr>
+		<th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+<% blog.forEach(function(blog){%>
+	<tr id="f">
+		<td><%- blog.data %></td>
+	</tr>
+<%}) %>
+    </tbody>        
+</table>
 <CENTER>
 	<p style="color: #F44336; font-size: 3em;">Welcome <span style="color: green; font-size: 35px;"> <b><%= users.firstname %> <%= users.lastname %></b></span> to BizzList II project. </p>
 	<h2 style="color: #D50000;">You are logged in successfully.....</h2>
@@ -29,3 +58,17 @@ app.delete('/users/delete/:id', function(req, res){
 </div>
 
 
+<script>
+
+function appendTable(data){
+		data = $("<div />").html(data).text();
+        $("#sample").append(data);
+
+}
+
+$(document).ready(function() {
+
+
+
+});
+</script>

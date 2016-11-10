@@ -4,57 +4,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <% include partials/header_1.html %>
+  <script src="js/blog.js"></script>
 
   <script>hljs.initHighlightingOnLoad();</script>
   <script>
-$(document).ready(function() {
 
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
-    
-    var x = 1, count=1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed 
-            x++;  //text box increment
-            $(wrapper).append('<div><textarea rows="3" cols="44" id="cont'+count+'" class="cont"></textarea><textarea rows="3" cols="44" id="code'+count+'" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div>'); //add input box
-
-            var codecontentss = $("#pre-id-0").clone().attr("id", "pre-id-"+count);
-            var blogcontent = $("#p-id-0").clone().attr("id", "p-id-"+count).text('');
-            codecontentss.find('#code-id-0').attr('id','code-id-'+count).text('');
-            $("#preview").after(codecontentss);
-
-            $("#preview").after(blogcontent);
-            count++;
-
-        }
-    });
-    
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-         $(this).parent('div').remove(); x--;
-         var id = $(this).attr('id');
-         $("#p-id-"+id).remove();
-         $("#pre-id-"+id).remove();
-    });
- });
- $(document).on("keyup",".cont",function() { 
-	    var id = $(this).attr('id');
-	    var idcnt = get_numbers(id);
-		$('#p-id-'+idcnt).text($(this).val());
-	});
-
-	$(document).on("keyup",".code",function() { 
-	    var id = $(this).attr('id');
-	    var idcode = get_numbers(id);
-		$('#code-id-'+idcode).text($(this).val());
-	});
-
- function get_numbers(input) {
-    return input.match(/[0-9]+/g);
-}
 </script>
 <html>
+<input type="submit" id="submit" value"Submit Post">
+<form method="post" action="addblog">
+    <textarea style="display:none;" rows="3" cols="43" name="blogdata" id="blogdata" ></textarea>
+    <input type="submit"  style="display:none;" id="saveblog" value="Save Blog">
+    </form>
+<textarea rows="13"  style="display:none;" cols="43" id="final" class="final"></textarea>
+
 <div class="input_fields_wrap">
     <button class="add_field_button">Add More Fields</button><br>
     <textarea rows="3" cols="43" id="cont0" class="cont"></textarea>
@@ -64,10 +27,7 @@ $(document).ready(function() {
 	
 </div>
 
+    <div id="sample"></div>
 		<p id="p-id-0">c</id>
-		<pre id="pre-id-0">
-			<code class="javascript" id="code-id-0">
-
-			</code>
-		</pre>
+		<pre id="pre-id-0"><code class="javascript" id="code-id-0"></code></pre>
 </html>
