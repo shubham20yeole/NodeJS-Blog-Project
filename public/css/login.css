@@ -6,10 +6,12 @@
     background: #ccc
 }
 ::-webkit-scrollbar-track-piece {
-    background: #888
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #3B2F63
+    background: #84b3c7
+
 }.classul {
         display:block;
         background: #3B2F63;
