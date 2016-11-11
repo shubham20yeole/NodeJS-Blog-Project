@@ -62,8 +62,7 @@ body{
 }
 
 .currentusers tr:hover{background-color:#f5f5f5}
-.scrollable{ overflow:scroll; height:250px; ;
- }
+.scrollable{ overflow:scroll; background-color: white; padding: 1%; height:250px; max-width: 100%; }
 
 .mapreportheading{
 	background-color: #199e95;
@@ -182,8 +181,13 @@ background-color:#faf8fb;box-shadow: 10px 5px 5px #7c7b7d;
 font-family: 'Bitter', serif;
  color: black; font-size: 12px;
 }
-.title{ padding-left: 1%; color: red; font-weight: bold; font-size: 1.52em; }
+.head{cursor: pointer;}
+.collapse{padding: 1%; background-color: #cccccc;}
+.collapse img{padding-right: 2%}
+.title{ padding-left: 1%; color: #999999; font-weight: bold; font-size: 1em; }
+.title:hover{ padding-left: 1%; color: blue; font-weight: bold; font-size: 1em; }
 .contenttext{padding: 2%; color: black; background-color: #FBE9E7;}
-.likeUser{ color: red; width: 60%;}
-.dislikeUser{ color: red; width: 60%;}
+.likeUser{ color: red; width: 5%;}
+.dislikeUser{ color: red; width: 5%;}
+.viewbutton{width: 5%; height: 30px; margin-top: -1cm;}
 .addspacing{ float: right; color: green; margin-top: 5px;}

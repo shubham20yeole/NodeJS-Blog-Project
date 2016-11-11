@@ -12,6 +12,7 @@
 
 
   <!-- ****************************************Google PLUGINs**************************************** -->
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,50 +32,66 @@ $(document).ready(function(){
 	 $("#ustable").dataTable({
         "sPaginationType": "full_numbers",
         "bJQueryUI": true,
-        "iDisplayLength": 2 
+        "iDisplayLength": 5 
     });
 	 	 $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
 	 	 $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
 
+	 $(".collapse").hide();
+
+	
+	 $("a").click(function(){
+	 	 $(".collapse").hide();
+	 });
+	$("span").click(function(){
+	 	 $(".collapse").hide();
+	 });
+
 })
+
+$(document).on("click",".head",function() { 
+	   var id = $(this).data('id');
+	 	$("#collapse-"+id).toggle("slow");
+	});
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
 </script>
 </head>
 <style></style>
 <div id="addpadding">
-<table class="currentuxsers" id="ustable">
+<table class="cudrrentusers" id="ustable">
     <thead>
         <tr>
 		<th>Name</th>
-		<th>LIKES / DISLIKES / VIEWS </th>
-		<th>Location</th>
-		<th>Blog</th>
         </tr>
     </thead>
 
     <tbody>
 <% blog.forEach(function(blog){%>
-	<tr id="scrollable" class="scrollables">
-		<td style="width:10%">
-		<%= blog.name %><br>Category: <%= blog.category %></td>
-
-		<td style="width:10%">
-		<button class="likeUser" data-id="<%= blog._id %>"><img src="images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>
-
-		
-		<p id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser">Views <%= blog.views %></p>
-		<button class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>
-
+	<tr  class="haed">
+		<td class="namesection" >
+			<div id="head-<%= blog._id %>" data-id="<%= blog._id %>" class="head">
+				<p class="title">
+					<img src="/images/more.jpg" width="12" height="12">&nbsp;	&nbsp;<%= blog.title %>
+				</p>
+				<div style="float: right; margin-top: -1cm;">
+					Posted by <%= blog.name %> under <%= blog.category %> category</div>
+				</div>
+			</div>
+			<div id="collapse-<%= blog._id %>" class="collapse">
+				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>	&nbsp;	&nbsp;
+				<button class="likeUser" data-id="<%= blog._id %>"><img src="images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>	&nbsp;	&nbsp;
+				<button class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>	&nbsp;	&nbsp;
+				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> </span><br><br>
+				<div class="scrollable" style><%- blog.data %></div>
+			</div>
+			
 		</td>
-
-		<td style="width:5%"><a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="https://bestanimations.com/Earth&Space/Earth/earth-spinning-rotating-animation-40.gif" width="42" height="42"></a></td>
-
-		<td><div style="box-shadow: inset 0 0 0.7em gold; padding: 1% 2% 4% 2%; background-color: #fbf4fd;"><p class="title"><%= blog.title %></p><hr><div class="scrollable"><%- blog.data %></div></div></td>
 	</tr>
 <%}) %>
     </tbody>        
 </table>
+</div>
 </div>
 	<div id="popup1" class="overlay">X
 	<div class="popup">
@@ -109,5 +126,7 @@ function init_map(x,y,z){
 
 		infowindow.open(map,marker);}
 </script>
+
+
 </body>
 </html>
