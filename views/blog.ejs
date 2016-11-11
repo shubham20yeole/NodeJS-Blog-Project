@@ -5,6 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <% include partials/header_1.html %>
   <script src="js/blog.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/blog.css">
 
   <script>hljs.initHighlightingOnLoad();</script>
   <script>
@@ -14,10 +15,10 @@
 <div style="padding: 4%">
 <button style="float: right;" id="submit">Save Post</button>
 <form method="post" action="addblog">
-    <input type="text" name="title" id="title" placeholder="Title">
+    <input type="text" name="title" id="title" class="titleInp" placeholder=" Please enter title of what this post is about...!"><br><br>
     <input type="hidden" name="category" id="categoryinp" value="other" placeholder="category">
       <select id="category">
-        <option value="other">Select Category</option>
+        <option value="other">Select Category under which this post should come</option>
         <option value="Java">Java</option>
         <option value="NodeJs">NodeJs</option>
         <option value="JavaScript">JavaScript</option>
@@ -34,19 +35,32 @@
     <input type="submit"  style="display:none;" id="saveblog" value="Save Blog">
     </form>
 <textarea rows="13"  style="display:none;" cols="43" id="final" class="final"></textarea>
+  <button class="add_field_button">Add More Fields</button><br><br>
+  <div id="scrollable">
 
 <div class="input_fields_wrap">
-    <button class="add_field_button">Add More Fields</button><br>
-    <textarea rows="3" cols="43" id="cont0" class="cont" placeholder="Section Description"></textarea>
-    <textarea rows="3" cols="43" id="code0" class="code" placeholder="Section Code"></textarea>
+    <div class="section group">
+      <div class="col span_1_of_2">
+        <textarea rows="3" cols="43" id="cont0" class="cont" placeholder="Section Description"></textarea>
+      </div>
+      <div class="col span_1_of_2">
+        <textarea rows="3" cols="43" id="code0" class="code" placeholder="Section Code"></textarea>
+      </div>
+    </div>
+  </div>
 </div>
-<div id="preview">
-	
-</div>
+<div id="previewSample">
+<h1 id="lookslikemsg">Your blog will look like this</h1>
+<h2 id="showtitle"></h1>
+<h2 id="showcategory"></h2>
+  <div id="preview">
+  	
+  </div>
 
     <div id="sample"></div>
-		<p id="p-id-0"></id>
-		<pre id="pre-id-0"><code class="javascript" id="code-id-0"></code></pre>
+		<p id="p-id-0" class="blogContent"></p>
+		<pre id="pre-id-0" class="blogCodeContent"><code class="javascript" id="code-id-0"></code></pre>
 
+</div>
 </div>
 </html>

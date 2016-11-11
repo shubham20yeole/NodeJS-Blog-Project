@@ -9,6 +9,7 @@
   <!-- ****************************************High Lighter PLUGINs**************************************** -->
 </script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 
   <!-- ****************************************Google PLUGINs**************************************** -->
@@ -51,7 +52,7 @@ $(document).ready(function(){
 
 $(document).on("click",".head",function() { 
 	   var id = $(this).data('id');
-	 	$("#collapse-"+id).toggle("slow");
+	 	$("#collapse-"+id).toggle("slow").addClass("animated bounceInDown");
 	});
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
@@ -62,7 +63,7 @@ $(document).on("click",".head",function() {
 <table class="cudrrentusers" id="ustable">
     <thead>
         <tr>
-		<th>Name</th>
+		<th>Java and Node.js Blogs by Shubham Yeole</th>
         </tr>
     </thead>
 
@@ -74,7 +75,7 @@ $(document).on("click",".head",function() {
 				<p class="title">
 					<img src="/images/more.jpg" width="12" height="12">&nbsp;	&nbsp;<%= blog.title %>
 				</p>
-				<div style="float: right; margin-top: -1cm;">
+				<div style="color: #999999; float: right; margin-top: -1cm;">
 					Posted by <%= blog.name %> under <%= blog.category %> category</div>
 				</div>
 			</div>

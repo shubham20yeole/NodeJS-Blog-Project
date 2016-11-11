@@ -31,7 +31,7 @@ $("#saveblog").delay(1000).click();
         e.preventDefault();
         if(x < max_fields){ //max input box allowed 
             x++;  //text box increment
-            $(wrapper).append('<div><textarea rows="3" cols="44" id="cont'+count+'" placeholder="Section Description" class="cont"></textarea><textarea rows="3" cols="44" id="code'+count+'" placeholder="Section Code" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div>'); //add input box
+            $(wrapper).append('<div class="section group" id="field'+count+'"><div class="col span_1_of_2"><textarea rows="3" cols="44" id="cont'+count+'" placeholder="Section Description" class="cont"></textarea></div><div class="col span_1_of_2"><textarea rows="3" cols="44" id="code'+count+'" placeholder="Section Code" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div></div></div>'); //add input box
 
             var codecontentss = $("#pre-id-0").clone().attr("id", "pre-id-"+count);
             var blogcontent = $("#p-id-0").clone().attr("id", "p-id-"+count).text('');
@@ -39,24 +39,32 @@ $("#saveblog").delay(1000).click();
             $("#preview").after(codecontentss);
 
             $("#preview").after(blogcontent);
-
+        $('#scrollable').scrollTop($('#scrollable')[0].scrollHeight);
+        var d = $('#scrollable');
+        d.scrollTop(d.prop("scrollHeight"));
             count++;
 
         }
     });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-         $(this).parent('div').remove(); x--;
+         
+         
          var id = $(this).attr('id');
+         $("#field"+id).remove();
          $("#p-id-"+id).remove();
          $("#pre-id-"+id).remove();
     });
  });
  $(document).on("keyup",".cont",function() { 
-	    var id = $(this).attr('id');
-	    var idcnt = get_numbers(id);
-		$('#p-id-'+idcnt).text($(this).val());
-	});
+        var id = $(this).attr('id');
+        var idcnt = get_numbers(id);
+        $('#p-id-'+idcnt).text($(this).val());
+    });
+
+ $(document).on("keyup","#title",function() { 
+        $('#showtitle').text("Title: "+$(this).val());
+    });
 
 	$(document).on("keyup",".code",function() { 
       var id = $(this).attr('id');
@@ -67,6 +75,7 @@ $("#saveblog").delay(1000).click();
 $(document).on("change","#category",function() { 
         var category = $(this).val();
         $('#categoryinp').val($(this).val());
+        $('#showcategory').text("Category: "+$(this).val());
     });
 
  function get_numbers(input) {
