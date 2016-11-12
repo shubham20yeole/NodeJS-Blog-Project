@@ -25,7 +25,9 @@
   <!-- ****************************************My PLUGINs**************************************** -->
   <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
 
- 
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  <script src="js/datatable.js"></script>
+  <script src="js/dashboard.js"></script>
 
   <script>hljs.initHighlightingOnLoad();</script>
 
@@ -104,76 +106,20 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- Introduction menu -->
-<div class="w3-col l4">
-  <!-- About Card -->
-  <div class="w3-card-2 w3-margin w3-margin-top">
-  <img src="../../images/shubham.jpg" style="width:100%">
-    <div class="w3-container w3-white">
-      <h4><b>S h u b h a m  _  Y e o l e</b></h4>
-      <p>I am a Full Stack developer. Through all of my accomplishments and disappointments, I have always been especially proud of the dedication and fervor I possess for my personal beliefs and values.</p>
-    </div>
-  </div><hr>
-  
-  <!-- Posts -->
-  <div class="w3-card-2 w3-margin">
-    <div class="w3-container w3-padding">
-      <h4>Popular Posts</h4>
-    </div>
-    <ul class="w3-ul w3-hoverable w3-white">
-      <li class="w3-padding-16">
-        <img src="../../images/java.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">JAVA</span><br>
-        <span>Data Structures</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="../../images/nodejs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Node.js</span><br>
-        <span>Twilio and computer science project doubts</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="../../images/javascript_scripting_language.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">JavaScript</span><br>
-        <span>Front End Enhancement</span>
-      </li>
-      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/jquery.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">jQuery</span><br>
-        <span>Frontend</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/angularjs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">AngularJS</span><br>
-        <span>Frontend</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/ajax.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">AJAX</span><br>
-        <span>Frontend</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/mongodb_database.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">MongoDB</span><br>
-        <span>MongoDB Queries</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/mysql.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">MySQL</span><br>
-        <span>MySQL Database</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/hibernate.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Hibernate</span><br>
-        <span>Queries</span>
-      </li>
-       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/spring.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Spring</span><br>
-        <span>Spring Framework</span>
-      </li>
 
-    </ul>
-  </div>
-  <hr>
+  
+<script type="text/javascript">
+  
+  $(document).on("click",".w3-padding-16",function() { 
+      var id = $(this).attr('id');
+    alert(id);
+    window.location = "http://localhost:3000/dashboard/"+id;
+});
+
+</script>
+    <% include partials/tiles/rightsidedown.html %>
+
+  
  
   <!-- Labels / tags -->
   <div class="w3-card-2 w3-margin">
