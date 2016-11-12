@@ -58,6 +58,7 @@
     clear: both;
     padding: 0px;
     margin: 0px;
+
 }
 
 /*  COLUMN SETUP  */
@@ -93,34 +94,41 @@
     .span_2_of_2, .span_1_of_2 { width: 100%; }
 }
 .cont{
-    background:#FFFFFF url(images/searchtext.png) no-repeat 85px 8px;
+    background:#FFFFFF url(/images/discoderlogo.jpg) no-repeat 85px 8px;
+   background-size: 100% 100%;
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
     width: 430px;
+    color: black;
     height:60px;
     border:1px solid #3366FF;
     border-left: 4px solid #3366FF;
 }
 .code{
-    background:#FFFFFF url(https://www.logomoose.com/wp-content/uploads/gravity_forms/1-ccb3a626c22b416a31686ab909937935/2014/11/maraz_logo_01.PNG) no-repeat 85px 8px;
+    background:#FFFFFF url(/images/coderlogo.jpg) no-repeat 85px 8px;
     background-size: 100% 100%;
     background-position: 1px 1px;
     background-repeat: no-repeat;
     width: 430px;
-    color: white;
+    color: blackf;
     height:60px;
     border:1px solid #3366FF;
     border-left: 4px solid #3366FF;
 }
 #scrollable{
+    
    overflow:scroll; 
-  background-color: white; 
+  background-color: #fafbfc; 
   padding: 0% 1% 0% 1%; 
   max-height:150px; 
   max-width: 100%;
-  -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);
+-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
-#previewSample{ background-color: #ECEFF1; padding: 3%; }
+#previewSample{ background-color: #ECEFF1; padding: 3%; -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
 .blogContent{ background-color: white; padding: 1%}
 .javascript{ background-color: #263238; color: #90A4AE; padding: 1%}
 .lookslikemsg{}

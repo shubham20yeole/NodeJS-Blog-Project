@@ -69,14 +69,15 @@ $(document).on("click",".head",function() {
 
     <tbody>
 <% blog.forEach(function(blog){%>
-	<tr  class="haed">
+	<tr  class="haed" id="tr-<%= blog._id %>">
 		<td class="namesection" >
 			<div id="head-<%= blog._id %>" data-id="<%= blog._id %>" class="head">
 				<p class="title">
 					<img src="/images/more.jpg" width="12" height="12">&nbsp;	&nbsp;<%= blog.title %>
+
 				</p>
 				<div style="color: #999999; float: right; margin-top: -1cm;">
-					Posted by <%= blog.name %> under <%= blog.category %> category</div>
+					Posted by <%= blog.name %> under <%= blog.category %> category <a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a></div>
 				</div>
 			</div>
 			<div id="collapse-<%= blog._id %>" class="collapse">

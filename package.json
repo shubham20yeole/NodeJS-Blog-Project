@@ -16,6 +16,7 @@
     "express-session": "^1.14.2",
     "express-validator": "^2.21.0",
     "jade": "^1.11.0",
+    "moment": "^2.16.0",
     "mongodb": "^2.2.11",
     "mongojs": "^2.4.0",
     "node-linkedin": "^0.5.4",

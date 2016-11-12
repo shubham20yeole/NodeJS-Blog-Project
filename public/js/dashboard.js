@@ -12,7 +12,7 @@ function likeUser(){
 
       }); 
 }
-
+ 
 function dislikeUser(){
   var tagId = $(this).data('id');
     var parameters = { search: $(this).data('id') };
@@ -27,3 +27,23 @@ $(document).on("keyup","#searchinp",function() {
       var id = $(this).val();
     $('input').val(id);
   });
+$(document).ready(function(){
+  $(".deleteBlog").on('click', deleteBlog);
+   
+})
+
+function deleteBlog(){
+   var person = prompt("This is an admin action, Please enter your admin password: ", "admin20");
+  if(person == "admin20"){
+    var parameters = { search: $(this).data('id') };
+          var dataIdOfTr = $(this).data('id');
+          $("#collapse-"+dataIdOfTr).hide();
+          $.get( '/users/blog/delete/'+$(this).data('id'),parameters, function(blog) {
+            $('#tr-'+dataIdOfTr).addClass("animated fadeOutDown");
+            window.setTimeout(function(){$('#tr-'+dataIdOfTr).hide();}, 900);
+      });
+
+  }else{
+    return false;
+  }
+}

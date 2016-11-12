@@ -132,7 +132,7 @@ app.post('/users/add', function(req, res){
 	req.checkBody('email', 'Email is required').notEmpty();
 
 	var errors = req.validationErrors();
-	
+	var datetime = new Date();
  db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
           var students = "Shubham is Pace CS student";
@@ -156,6 +156,7 @@ app.post('/users/add', function(req, res){
               lastname: req.body.lastname,
               email: req.body.email,
               phone: req.body.phone,
+              date: datetime,
               website: req.body.website,
               password: req.body.password,
               fbid: req.body.email+"w$9jKp3e$!Zy_Ned",
@@ -213,6 +214,13 @@ app.get('/users/delete/:id', function(req, res){
   // db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
       res.send(req.params.id+" Test");
   // });
+});
+
+app.get('/users/blog/delete/:id', function(req, res){
+  console.log(req.params.id);
+  db.blog.remove({_id: ObjectId(req.params.id)}, function(err, result){
+      res.send(req.params.id+" Test");
+  });
 });
 
 app.get('/users/like/:id', function(req, res){
@@ -329,6 +337,8 @@ app.use(session({
 app.post('/addblog/', function(req, res){
   
 console.log("success");
+var datetime = new Date();
+console.log(datetime);
     var newBlog = {
       title: req.body.title,
       category: req.body.category,
@@ -337,6 +347,7 @@ console.log("success");
       views: req.body.views,
       long: req.body.long,
       lat: req.body.lat,
+      date: datetime,
       name: req.session.users.firstname +" "+req.session.users.lastname,
       data: req.body.blogdata
     }
