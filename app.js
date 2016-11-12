@@ -250,9 +250,12 @@ app.get('/users/dislike/:id', function(req, res){
 });
 app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
+
   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
-    res.render("fullblog",{blog: blog});
+  db.comments.find({ blogid: req.params.id }, function (err, comments) {
+      res.render("fullblog",{blog: blog, comments: comments});
     });
+  });
 });
 
 app.get('/searching', function(req, res){
@@ -369,6 +372,25 @@ console.log(datetime);
         console.log(err);
       }
     res.redirect('/dashboard');
+  });
+});
+app.post('/view/blog/comment/:id', function(req, res){
+    var datetime = new Date();
+    var url = req.body.url;
+    console.log(datetime);
+    var newComment = {
+      comment: req.body.comment,
+      fullname: req.body.firstname +" " +req.body.lastname,
+      blogid: req.params.id,
+      long: req.body.long,
+      lat: req.body.lat,
+      date: datetime
+    }
+    db.comments.insert(newComment, function(err, result){
+      if(err){
+        console.log(err);
+      }
+    res.redirect(url+"#scrolldown");
   });
 });
 
