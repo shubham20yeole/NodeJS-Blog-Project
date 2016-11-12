@@ -248,7 +248,7 @@ app.get('/users/dislike/:id', function(req, res){
   });
     });
 });
-app.get('/viewblog/:id', function(req, res){
+app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
     res.render("fullblog",{blog: blog});
