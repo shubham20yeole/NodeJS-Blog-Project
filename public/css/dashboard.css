@@ -185,7 +185,9 @@ font-family: 'Bitter', serif;
 .title{ padding-left: 1%; color: #999999; font-weight: bold; font-size: 1em; }
 .title:hover{ padding-left: 1%; color: blue; font-weight: bold; font-size: 1em; }
 .contenttext{padding: 2%; color: black; background-color: #FBE9E7;}
-.likeUser{ color: red; width: 5%;}
+.likeUser{ color: green; width: 5%;}
+.likeUser:hover{ opacity: 0.5; cursor: pointer;}
+.dislikeUser:hover{ opacity: 0.5; cursor: pointer;}
 .dislikeUser{ color: red; width: 5%;}
 .viewbutton{width: 5%; height: 30px; margin-top: -1cm;}
 .addspacing{ float: right; color: green; margin-top: 5px;}

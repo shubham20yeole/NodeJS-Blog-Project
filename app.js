@@ -297,7 +297,7 @@ function requireLogin (req, res, next) {
 };
 
 
-app.get('/dashboard', requireLogin, function(req, res) {
+app.get('/dashboard', function(req, res) {
   var blogviewmsg = "You are viewing blogs of all category";
   db.blog.find(function (err, docs) {
     res.render("dashboard.ejs",{
@@ -308,6 +308,18 @@ app.get('/dashboard', requireLogin, function(req, res) {
   });
   } )
 });
+
+// app.get('/dashboard', requireLogin, function(req, res) {
+//   var blogviewmsg = "You are viewing blogs of all category";
+//   db.blog.find(function (err, docs) {
+//     res.render("dashboard.ejs",{
+//     blog: docs,
+//     users: req.session.users,
+//     message: blogviewmsg,
+//     session: "true"
+//   });
+//   } )
+// });
 
 app.get('/dashboard/:id', requireLogin, function(req, res) {
    var blogviewmsg = "You are viewing blogs of "+req.params.id+" category";

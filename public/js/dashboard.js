@@ -9,6 +9,7 @@ function likeUser(){
 
           $.get( '/users/like/'+$(this).data('id'),parameters, function(data2) {
             $("#like-"+tagId).text(data2);
+            $("#like-2-"+tagId).text(data2);
 
       }); 
 }
@@ -18,7 +19,8 @@ function dislikeUser(){
     var parameters = { search: $(this).data('id') };
 
           $.get( '/users/dislike/'+$(this).data('id'),parameters, function(data2) {
-            $("#dislike-"+tagId).text(data2);
+            $("#dislike-2-"+tagId).text(data2);
+            $("#dislike-2-"+tagId).text(data2);
 
       }); 
 }

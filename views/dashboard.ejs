@@ -142,7 +142,17 @@ and is wrapped around the whole page content, except for the footer in this exam
           <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b><a href="/view/blog/<%= blog._id %>">READ MORE »</a></b></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+          <table width="40%" style="float: right;">
+          <tr>
+          <td><p><span class="w3-padding-large w3-right">
+            <p class="likeUser" data-id="<%= blog._id %>"><img src="/images/like.jpg"  width="42" height="42" /><span id="like-2-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>
+            </p></span></p></td>
+            <td>
+            <p class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="42" height="42" /><span id="dislike-2-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></p>
+            </span></p>
+            </td>
+            </tr>
+            </table>
         </div>
       </div>
     </div>
