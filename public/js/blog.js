@@ -58,7 +58,8 @@ $("#saveblog").delay(1000).click();
  $(document).on("keyup",".cont",function() { 
         var id = $(this).attr('id');
         var idcnt = get_numbers(id);
-        $('#p-id-'+idcnt).text($(this).val());
+
+        $('#p-id-'+idcnt).text("<b>Section : "+(parseInt(idcnt)+1)+", Data: </b>"+$(this).val());
     });
 
  $(document).on("keyup","#title",function() { 

@@ -194,4 +194,5 @@ font-family: 'Bitter', serif;
 .scrollable{ overflow:scroll; background-color: white; padding: 0% 1% 0% 1%; height:250px; max-width: 100%;-webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);
 -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);
 box-shadow: 0px 0px 5px -1px rgba(0,0,0,1);}
+li{ font-family: 'Roboto', sans-serif;}
 
