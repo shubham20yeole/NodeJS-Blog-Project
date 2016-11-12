@@ -244,18 +244,15 @@ app.get('/users/dislike/:id', function(req, res){
     count = blog.dislike;
     count++;
      db.blog.update({ _id: ObjectId(req.params.id)}, {$set:{dislike: count}}, function (err, result) {
-       res.send(""+count);
-
-  
+       res.send(""+count);  
   });
     });
-   
-    //  db.blog.findOne({_id: ObjectId(req.params.id)}, function(err, blog) {
-  //   console.log(blog.like);
-  // });
-  //  blog.update({_id: req.params.id}, {$set:{like: 1}});   
-
-  //   res.send(req.params.id);
+});
+app.get('/view/blog/:id', function(req, res){
+  console.log(req.params.id);
+  db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
+    res.render("fullblog",{blog: blog});
+    });
 });
 
 app.get('/searching', function(req, res){

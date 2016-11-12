@@ -28,70 +28,40 @@
 
   <script>hljs.initHighlightingOnLoad();</script>
 
-<script>
-$(document).ready(function(){
-	 $("#ustable").dataTable({
-        "sPaginationType": "full_numbers",
-        "bJQueryUI": true,
-        "iDisplayLength": 5 
-    });
-	 	 $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
-	 	 $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
-
-	 $(".collapse").hide();
-
-	
-	 $("a").click(function(){
-	 	 $(".collapse").hide();
-	 });
-	$("span").click(function(){
-	 	 $(".collapse").hide();
-	 });
-
-})
-
-$(document).on("click",".head",function() { 
-	   var id = $(this).data('id');
-	 	$("#collapse-"+id).toggle("slow");
-	});
-</script>
-<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
-</script>
 </head>
 <style></style>
 <div id="addpadding">
-<table class="cudrrentusers" id="ustable">
-    <thead>
-        <tr>
-		<th>Java and Node.js Blogs by Shubham Yeole</th>
-        </tr>
-    </thead>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1780513095524261";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-    <tbody>
-<% blog.forEach(function(blog){%>
-	<tr  class="haed" id="tr-<%= blog._id %>">
-		<td class="namesection" >
-			<div id="head-<%= blog._id %>" data-id="<%= blog._id %>" class="head">
-				<p class="title">
-					<img src="/images/more.jpg" width="12" height="12">&nbsp;	&nbsp;<%= blog.title %>
+<div class="fb-share-button" data-href="https://java-nodejs-blog.herokuapp.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+	<%= blog.title %>
 
-				</p>
-				<div style="color: #999999; float: right; margin-top: -1cm;">
-					Posted by <%= blog.name %> under <%= blog.category %> category <a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a></div>
-				</div>
-			</div>
-			<div id="collapse-<%= blog._id %>" class="collapse">
+	Posted by <%= blog.name %> under <%= blog.category %> category 
+	<a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a></div>
+				
+				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
 
-				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>	&nbsp;	&nbsp;
 				<button class="likeUser" data-id="<%= blog._id %>"><img src="images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>	&nbsp;	&nbsp;
+				
 				<button class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>	&nbsp;	&nbsp;
-				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> </span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
-				<div class="scrollable" style><%- blog.data %></div>
+				
+				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> 
+
+				</span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
+				
+				<%- blog.data %>
 			</div>
 			
 		</td>
 	</tr>
-<%}) %>
+
     </tbody>        
 </table>
 </div>
