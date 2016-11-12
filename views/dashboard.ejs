@@ -1,6 +1,8 @@
-<% include partials/header_1.html %>
 
-  <!-- ****************************************DATA TABLE PLUGINs**************************************** -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
 <link rel="stylesheet" type="text/css" href="/css/datatable.css">
@@ -21,10 +23,12 @@
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
 
   <!-- ****************************************My PLUGINs**************************************** -->
+  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
 
   <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
   <script src="js/datatable.js"></script>
   <script src="js/dashboard.js"></script>
+
 
   <script>hljs.initHighlightingOnLoad();</script>
 
@@ -57,9 +61,25 @@ $(document).on("click",".head",function() {
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
 </script>
-</head>
-<style></style>
-<div id="addpadding">
+<script>
+
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+
+<% include partials/loginheader.html %>
 <table class="cudrrentusers" id="ustable">
     <thead>
         <tr>
@@ -94,9 +114,167 @@ $(document).on("click",".head",function() {
 <%}) %>
     </tbody>        
 </table>
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <% blog.forEach(function(blog){%>
+
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="../../images/<%= blog.imagename %>.jpg" alt="Nature" style="width:100%; height: 300px">
+    <div class="w3-container w3-padding-8">
+      <h3><b><%= blog.title %></b></h3>
+      <h5>Posted by: <%= blog.name %>,<br> 
+      <h5>Blog category: <%= blog.category %>,<br> 
+      <span class="w3-opacity"><%= blog.date %></span></h5>
+
+      <span class="w3-opacity">
+	      Posted from GPS: &nbsp;	&nbsp;&nbsp;	&nbsp;<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
+      </span>
+    </div>
+
+    <div class="w3-container">
+      <p><div class="wrapper" style><div class="scrollable" style><%- blog.data %></div></div></p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%}) %>
+
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
+    <div class="w3-container w3-padding-8">
+      <h3><b>BLOG ENTRY</b></h3>
+      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
+        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
 </div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card-2 w3-margin w3-margin-top">
+  <img src="../../images/shubham.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>S h u b h a m  _  Y e o l e</b></h4>
+      <p>I am a Full Stack developer. Through all of my accomplishments and disappointments, I have always been especially proud of the dedication and fervor I possess for my personal beliefs and values.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card-2 w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Popular Posts</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="../../images/java.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">JAVA</span><br>
+        <span>Data Structures</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="../../images/nodejs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Node.js</span><br>
+        <span>Twilio and computer science project doubts</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="../../images/javascript_scripting_language.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">JavaScript</span><br>
+        <span>Front End Enhancement</span>
+      </li>
+      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/jquery.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">jQuery</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/angularjs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">AngularJS</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/ajax.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">AJAX</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/mongodb_database.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">MongoDB</span><br>
+        <span>MongoDB Queries</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/mysql.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">MySQL</span><br>
+        <span>MySQL Database</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/hibernate.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Hibernate</span><br>
+        <span>Queries</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/spring.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Spring</span><br>
+        <span>Spring Framework</span>
+      </li>
+
+    </ul>
+  </div>
+  <hr>
+ 
+  <!-- Labels / tags -->
+  <div class="w3-card-2 w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+    </p>
+    </div>
+  </div>
+  
+<!-- END Introduction Menu -->
 </div>
-	<div id="popup1" class="overlay">X
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <button class="w3-btn w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+  <button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+<div id="popup1" class="overlay">X
 	<div class="popup">
 		<div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
 		<a class="close" href="#"> &times;</a>
@@ -129,7 +307,6 @@ function init_map(x,y,z){
 
 		infowindow.open(map,marker);}
 </script>
-
-
 </body>
 </html>
+

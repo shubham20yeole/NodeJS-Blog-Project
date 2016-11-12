@@ -303,7 +303,7 @@ app.get('/dashboard', requireLogin, function(req, res) {
   });
   } )
 });
-app.get('/random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24/', function(req, res){
+app.get('/clients/', function(req, res){
   db.users.find(function (err, docs) {
     res.render("admin.ejs",{
     errmsg : errmsg,

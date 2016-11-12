@@ -39,8 +39,7 @@ function deleteBlog(){
           var dataIdOfTr = $(this).data('id');
           $("#collapse-"+dataIdOfTr).hide();
           $.get( '/users/blog/delete/'+$(this).data('id'),parameters, function(blog) {
-            $('#tr-'+dataIdOfTr).addClass("animated fadeOutDown");
-            window.setTimeout(function(){$('#tr-'+dataIdOfTr).hide();}, 900);
+            $('#tr-'+dataIdOfTr).hide();
       });
 
   }else{

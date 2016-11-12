@@ -25,9 +25,7 @@
   <!-- ****************************************My PLUGINs**************************************** -->
   <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
 
-  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-  <script src="js/datatable.js"></script>
-  <script src="js/dashboard.js"></script>
+ 
 
   <script>hljs.initHighlightingOnLoad();</script>
 
@@ -48,33 +46,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width:1400px">
 
-<!-- Header -->
-<header class="w3-container w3-center w3-padding-32">
-  <h1><b>Java and Node.js Blog</b></h1>
-  <p>Welcome to the blog of S H U B H A M</p>
-  <p>
-  		<a href="https://www.linkedin.com/in/shubhamyeole" target="_blank">
-  			<img src="../../images/linkedin.jpg"  width="22" height="22" /></a>
-		<a href="https://github.com/shubham20yeole" target="_blank">
-			<img src="../../images/github.jpg"  width="22" height="22" /></a>
-		<a href="https://www.facebook.com/sy06736n" target="_blank">
-			<img src="../../images/fb.jpg"  width="22" height="22" /></a>
-		<a href="http://stackoverflow.com/users/5451749/shubham-yeole" target="_blank">
-			<img src="../../images/stackoverflow.jpg"  width="22" height="22" /></a>
-  </p>
-</header>
 
-<!-- Grid -->
-<div class="w3-row">
-<div id="tabs">
-  <ul class="header">
-    <li><a href="/dashboard"><span>Home</span></a></li>
-    <li><a href="/blog"><span>New Post</span></a></li>
-    <li><a href="random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24"><span>Clients</span></a></li>
-    <li><a href="/blog"><span>Post Blog</span></a></li>
-    <li style="float: right"><a href="/logout/"><span>L O G O U T</span></a></li>
-  </ul>
-</div>
+<% include partials/loginheader.html %>
+
 <!-- Blog entries -->
 <div class="w3-col l8 s12">
   <!-- Blog entry -->
@@ -147,27 +121,27 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
     <ul class="w3-ul w3-hoverable w3-white">
       <li class="w3-padding-16">
-        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/java.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">JAVA</span><br>
         <span>Data Structures</span>
       </li>
       <li class="w3-padding-16">
-        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/nodejs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">Node.js</span><br>
         <span>Twilio and computer science project doubts</span>
       </li>
       <li class="w3-padding-16">
-        <img src="../../images/javascript.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/javascript_scripting_language.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">JavaScript</span><br>
         <span>Front End Enhancement</span>
       </li>
       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/jquery.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">jQuery</span><br>
         <span>Frontend</span>
       </li>
        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/angularjs.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">AngularJS</span><br>
         <span>Frontend</span>
       </li>
@@ -177,12 +151,12 @@ and is wrapped around the whole page content, except for the footer in this exam
         <span>Frontend</span>
       </li>
        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/mongodb.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/mongodb_database.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">MongoDB</span><br>
         <span>MongoDB Queries</span>
       </li>
        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <img src="../../images/mysql.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
         <span class="w3-large">MySQL</span><br>
         <span>MySQL Database</span>
       </li>
