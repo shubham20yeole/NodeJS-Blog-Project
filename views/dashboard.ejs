@@ -1,9 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<title>Shubham Java & NodeJs Blog</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/dashboardlayout.css" media="screen" />
+<% include partials/header_1.html %>
+
+  <!-- ****************************************DATA TABLE PLUGINs**************************************** -->
+
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
 <link rel="stylesheet" type="text/css" href="/css/datatable.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -11,7 +9,7 @@
   <!-- ****************************************High Lighter PLUGINs**************************************** -->
 </script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 
   <!-- ****************************************Google PLUGINs**************************************** -->
@@ -32,191 +30,106 @@
 
 <script>
 $(document).ready(function(){
-   $("#ustable").dataTable({
+	 $("#ustable").dataTable({
         "sPaginationType": "full_numbers",
         "bJQueryUI": true,
         "iDisplayLength": 5 
     });
-     $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
-     $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
+	 	 $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
+	 	 $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
 
-   $(".collapse").hide();
+	 $(".collapse").hide();
 
-  
-   $("a").click(function(){
-     $(".collapse").hide();
-   });
-  $("span").click(function(){
-     $(".collapse").hide();
-   });
+	
+	 $("a").click(function(){
+	 	 $(".collapse").hide();
+	 });
+	$("span").click(function(){
+	 	 $(".collapse").hide();
+	 });
 
 })
 
 $(document).on("click",".head",function() { 
-     var id = $(this).data('id');
-    $("#collapse-"+id).toggle("slow");
-  });
+	   var id = $(this).data('id');
+	 	$("#collapse-"+id).toggle("slow");
+	});
 </script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
-</script></head>
-<body>
-<div id="postHeader"> <a href="#">Links &#8250;&#8250;</a>&nbsp;&nbsp;<a href="#">Site Map &#8250;&#8250;</a>&nbsp;&nbsp;<a href="#">Contact &#8250;&#8250;</a> </div>
-<!--//end #postHeader//-->
-<div id="centerColumn">
-  <div id="navbar">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
-  <!--//end #navbar//-->
-  <div id="header">
-    <h1>site title</h1>
-    <h2>fixed 3-column over 4-column layout</h2>
-  </div>
-  <!--//end #headern//-->
- 
-  <table class="cudrrentusers" id="ustable">
+</script>
+</head>
+<style></style>
+<div id="addpadding">
+<table class="cudrrentusers" id="ustable">
     <thead>
         <tr>
-    <th>Java and Node.js Blogs by Shubham Yeole</th>
+		<th>Java and Node.js Blogs by Shubham Yeole</th>
         </tr>
     </thead>
 
     <tbody>
 <% blog.forEach(function(blog){%>
-  <tr  class="haed" id="tr-<%= blog._id %>">
-    <td class="namesection" >
-      <div id="head-<%= blog._id %>" data-id="<%= blog._id %>" class="head">
-        <p class="title">
-          <img src="/images/more.jpg" width="12" height="12">&nbsp; &nbsp;<%= blog.title %>
+	<tr  class="haed" id="tr-<%= blog._id %>">
+		<td class="namesection" >
+			<div id="head-<%= blog._id %>" data-id="<%= blog._id %>" class="head">
+				<p class="title">
+					<img src="/images/more.jpg" width="12" height="12">&nbsp;	&nbsp;<%= blog.title %>
 
-        </p>
-        <div style="color: #999999; float: right; margin-top: -1cm;">
-          Posted by <%= blog.name %> under <%= blog.category %> category <a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a></div>
-        </div>
-      </div>
-      <div id="collapse-<%= blog._id %>" class="collapse">
+				</p>
+				<div style="color: #999999; float: right; margin-top: -1cm;">
+					Posted by <%= blog.name %> under <%= blog.category %> category <a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a></div>
+				</div>
+			</div>
+			<div id="collapse-<%= blog._id %>" class="collapse">
 
-        <a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>  &nbsp;  &nbsp;
-        <button class="likeUser" data-id="<%= blog._id %>"><img src="profile/images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button> &nbsp;  &nbsp;
-        <button class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button> &nbsp;  &nbsp;
-        <span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> </span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
-        <div class="scrollable" style><%- blog.data %></div>
-      </div>
-      
-    </td>
-  </tr>
+				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>	&nbsp;	&nbsp;
+				<button class="likeUser" data-id="<%= blog._id %>"><img src="/images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>	&nbsp;	&nbsp;
+				<button class="dislikeUser" data-id="<%= blog._id %>"><img src="images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>	&nbsp;	&nbsp;
+				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> </span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
+				<div class="scrollable" style><%- blog.data %></div>
+			</div>
+			
+		</td>
+	</tr>
 <%}) %>
     </tbody>        
 </table>
-  <hr />
-  <div id="cell_1">
-    <h2>cell_1</h2>
-    <p class="news">Quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-    <ul class="news">
-      <li class="news"><a href="#">Link</a><br />
-        <em>Date<br />
-        Puerorum amicas adplicat auris.</em></li>
-      <li class="news"><a href="#">Link</a><br />
-        <em>Date<br />
-        Puerorum amicas adplicat auris.</em></li>
-    </ul>
-  </div>
-  <!--//end #cell_1//-->
-  <div id="cell_2">
-    <h2>cell_2</h2>
-    <p>Augur et fulgente decorus arcu Phoebus acceptusque novem Camenis, qui salutari levat arte fessos corporis artus, si Palatinas videt aequos aras remque.</p>
-    <p>Romanam Latiumque felix alterum in lustrum meliusque semper prorogat aevom, quaeque Aventinum tenet Algidumque, quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-  </div>
-  <!--//end #cell_2//-->
-  <div id="cell_3">
-    <h2>cell_3</h2>
-    <p>Augur et fulgente decorus arcu Phoebus acceptusque novem Camenis, qui salutari levat arte fessos corporis artus, si Palatinas videt aequos aras remque.</p>
-    <p>Romanam Latiumque felix alterum in lustrum meliusque semper prorogat aevom, quaeque Aventinum tenet Algidumque, quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-  </div><div id="cell_3">
-    <h2>cell_3</h2>
-    <p>Augur et fulgente decorus arcu Phoebus acceptusque novem Camenis, qui salutari levat arte fessos corporis artus, si Palatinas videt aequos aras remque.</p>
-    <p>Romanam Latiumque felix alterum in lustrum meliusque semper prorogat aevom, quaeque Aventinum tenet Algidumque, quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-  </div><div id="cell_3">
-    <h2>cell_3</h2>
-    <p>Augur et fulgente decorus arcu Phoebus acceptusque novem Camenis, qui salutari levat arte fessos corporis artus, si Palatinas videt aequos aras remque.</p>
-    <p>Romanam Latiumque felix alterum in lustrum meliusque semper prorogat aevom, quaeque Aventinum tenet Algidumque, quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-  </div><div id="cell_3">
-    <h2>cell_3</h2>
-    <p>Augur et fulgente decorus arcu Phoebus acceptusque novem Camenis, qui salutari levat arte fessos corporis artus, si Palatinas videt aequos aras remque.</p>
-    <p>Romanam Latiumque felix alterum in lustrum meliusque semper prorogat aevom, quaeque Aventinum tenet Algidumque, quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-  </div>
-  <!--//end #cell_3//-->
-  <hr />
-  <div id="box_1">
-    <h2>box_1</h2>
-    <p>Quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-    <ul>
-      <li><a href="#">Link&#8230;</a></li>
-    </ul>
-  </div>
-  <!--//end #box_1//-->
-  <div id="box_2">
-    <h2>box_2</h2>
-    <p>Quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-    <ul>
-      <li><a href="#">Link&#8230;</a></li>
-    </ul>
-  </div>
-  <!--//end #box_2//-->
-  <div id="box_3">
-    <h2>box_3</h2>
-    <p>Quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-    <ul>
-      <li><a href="#">Link&#8230;</a></li>
-    </ul>
-  </div>
-  <!--//end #box_3//-->
-  <div id="box_4">
-    <h2>box_4</h2>
-    <p>Quindecim Diana preces virorum curat et votis puerorum amicas adplicat auris.</p>
-    <ul>
-      <li><a href="#">Link&#8230;</a></li>
-    </ul>
-  </div>
-  <!--//end #box_4//-->
-  <div id="footer"> Copyright, &copy; 2005-2006 <a href="#">Company Name</a> | <a target="_blank" rel="nofollow" href="http://www.csstinderbox.com">The CSS Tinderbox</a> </div>
-  <!--//end #footer//-->
 </div>
-  <div id="popup1" class="overlay">X
-  <div class="popup">
-    <div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
-    <a class="close" href="#"> &times;</a>
-    </div>
-      <div id='gmap_canvas' style='height:440px;width:100%;'></div>
-    
-  </div>
+</div>
+	<div id="popup1" class="overlay">X
+	<div class="popup">
+		<div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
+		<a class="close" href="#"> &times;</a>
+		</div>
+			<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+		
+	</div>
 <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
 
 <style type="text/css">
 
 </style>
-      </div>
-    </div>
-    
+			</div>
+		</div>
+		
 <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-    <script type='text/javascript'>
+		<script type='text/javascript'>
 function init_map(x,y,z){
-  var myOptions = {center: myCenter,
-    zoom:15,center:new google.maps.LatLng(x,y),mapTypeId: google.maps.MapTypeId.MAP};
-    var myCenter = new google.maps.LatLng(x, y); 
+	var myOptions = {center: myCenter,
+		zoom:15,center:new google.maps.LatLng(x,y),mapTypeId: google.maps.MapTypeId.MAP};
+		var myCenter = new google.maps.LatLng(x, y); 
 
-    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+		map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
 
-    marker = new google.maps.Marker({position: myCenter, map: map});
+		marker = new google.maps.Marker({position: myCenter, map: map});
 
-    infowindow = new google.maps.InfoWindow({content:z});
+		infowindow = new google.maps.InfoWindow({content:z});
 
-    google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+		google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
 
-    infowindow.open(map,marker);}
-</script></body>
+		infowindow.open(map,marker);}
+</script>
+
+
+</body>
 </html>

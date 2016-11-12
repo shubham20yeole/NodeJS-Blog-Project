@@ -1,6 +1,8 @@
-<% include partials/header_1.html %>
 
-  <!-- ****************************************DATA TABLE PLUGINs**************************************** -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
 <link rel="stylesheet" type="text/css" href="/css/datatable.css">
@@ -21,68 +23,230 @@
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
 
   <!-- ****************************************My PLUGINs**************************************** -->
-  <link rel="stylesheet" type="text/css" href="../../css/fullblog.css">
+  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
 
   <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  <script src="js/datatable.js"></script>
+  <script src="js/dashboard.js"></script>
 
   <script>hljs.initHighlightingOnLoad();</script>
 
-</head>
-<style></style>
+<script>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1780513095524261";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
 
-<div class="fb-share-button" data-href="https://java-nodejs-blog.herokuapp.com/view/blog/<%= blog._id %>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-<div id="addpadding">
-	<%= blog.title %>
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
 
-	Posted by <%= blog.name %> under <%= blog.category %> category 
-	<a class="deleteBlog" data-id="<%= blog._id %>" href="#"><i class="material-icons" style="color: red">delete_forever</i></a>
-				
-				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32">
+  <h1><b>Java and Node.js Blog</b></h1>
+  <p>Welcome to the blog of S H U B H A M</p>
+  <p>
+  		<a href="https://www.linkedin.com/in/shubhamyeole" target="_blank">
+  			<img src="../../images/linkedin.jpg"  width="22" height="22" /></a>
+		<a href="https://github.com/shubham20yeole" target="_blank">
+			<img src="../../images/github.jpg"  width="22" height="22" /></a>
+		<a href="https://www.facebook.com/sy06736n" target="_blank">
+			<img src="../../images/fb.jpg"  width="22" height="22" /></a>
+		<a href="http://stackoverflow.com/users/5451749/shubham-yeole" target="_blank">
+			<img src="../../images/stackoverflow.jpg"  width="22" height="22" /></a>
+  </p>
+</header>
 
-				<button class="likeUser" data-id="<%= blog._id %>"><img src="../../images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>	&nbsp;	&nbsp;
-				
-				<button class="dislikeUser" data-id="<%= blog._id %>"><img src="../../images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>	&nbsp;	&nbsp;
-				
-				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="../../images/dislike.jpg"  width="22" height="22" /></button> 
-
-				</span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
-				
-				<%- blog.data %>
-			</div>
-			
-		</td>
-	</tr>
-
-    </tbody>        
-</table>
+<!-- Grid -->
+<div class="w3-row">
+<div id="tabs">
+  <ul class="header">
+    <li><a href="/dashboard"><span>Home</span></a></li>
+    <li><a href="/blog"><span>New Post</span></a></li>
+    <li><a href="random%20word%20%A3500%20d%20%A3500%20d%20%A3500%20bank%20%24"><span>Clients</span></a></li>
+    <li><a href="/blog"><span>Post Blog</span></a></li>
+    <li style="float: right"><a href="/logout/"><span>L O G O U T</span></a></li>
+  </ul>
 </div>
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="../../images/<%= blog.category %>.jpg" alt="Nature" style="width:100%; height: 300px">
+    <div class="w3-container w3-padding-8">
+      <h3><b><%= blog.title %></b></h3>
+      <h5>Posted by: <%= blog.name %>,<br> 
+      <h5>Blog category: <%= blog.category %>,<br> 
+      <span class="w3-opacity"><%= blog.date %></span></h5>
+
+      <span class="w3-opacity">
+	      Posted from GPS: &nbsp;	&nbsp;&nbsp;	&nbsp;<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
+      </span>
+    </div>
+
+    <div class="w3-container">
+      <p><div class="wrapper" style><%- blog.data %></div></p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
+    <div class="w3-container w3-padding-8">
+      <h3><b>BLOG ENTRY</b></h3>
+      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
+        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
 </div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card-2 w3-margin w3-margin-top">
+  <img src="../../images/shubham.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>S h u b h a m  _  Y e o l e</b></h4>
+      <p>I am a Full Stack developer. Through all of my accomplishments and disappointments, I have always been especially proud of the dedication and fervor I possess for my personal beliefs and values.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card-2 w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Popular Posts</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">JAVA</span><br>
+        <span>Data Structures</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Node.js</span><br>
+        <span>Twilio and computer science project doubts</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="../../images/javascript.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">JavaScript</span><br>
+        <span>Front End Enhancement</span>
+      </li>
+      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">jQuery</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">AngularJS</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/ajax.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">AJAX</span><br>
+        <span>Frontend</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/mongodb.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">MongoDB</span><br>
+        <span>MongoDB Queries</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/java2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">MySQL</span><br>
+        <span>MySQL Database</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/hibernate.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Hibernate</span><br>
+        <span>Queries</span>
+      </li>
+       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="../../images/spring.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Spring</span><br>
+        <span>Spring Framework</span>
+      </li>
+
+    </ul>
+  </div>
+  <hr>
+ 
+  <!-- Labels / tags -->
+  <div class="w3-card-2 w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+    </p>
+    </div>
+  </div>
+  
+<!-- END Introduction Menu -->
 </div>
-	<div id="popup1" class="overlay">X
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <button class="w3-btn w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+  <button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button>
+  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+<div id="popup1" class="overlay">X
 	<div class="popup">
 		<div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
-			<a class="close" href="#"> &times;</a>
+		<a class="close" href="#"> &times;</a>
 		</div>
-		<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+			<div id='gmap_canvas' style='height:440px;width:100%;'></div>
+		
 	</div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
 			</div>
-<div class="section group">
-	<div class="col span_1_of_2">
-	This is column 1
-	</div>
-	<div class="col span_1_of_2">
-	This is column 2
-	</div>
-</div>	
+		</div>
+		
 <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
 		<script type='text/javascript'>
 function init_map(x,y,z){
@@ -100,7 +264,6 @@ function init_map(x,y,z){
 
 		infowindow.open(map,marker);}
 </script>
-
-
 </body>
 </html>
+

@@ -3,7 +3,16 @@ TITLE: Fixed Three-Column Over Four-Column Layout V1.0
 DATE: 20060807
 AUTHOR: The CSS Tinderbox - http://www.csstinderbox.com
 *******************************************************/
-
+@media screen and (min-width: 480px) {
+    #centerColumn { 	
+		margin:0 auto;
+		padding:1em;
+		width:1720px;
+		text-align:left;
+		vertical-align: middle;	
+		background-color:#ffffff;
+		}
+}
 body {
 margin:.5em;
 padding:0;
@@ -67,7 +76,7 @@ text-transform:uppercase;
 #centerColumn { 	
 margin:0 auto;
 padding:1em;
-width:1420px;
+width:720px;
 text-align:left;
 vertical-align: middle;	
 background-color:#ffffff;
