@@ -1,19 +1,103 @@
-  <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
-	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+
+<!DOCTYPE html>
+<html>
+<title>Shubham Java and NodeJS Blog</title>
+
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/datatable.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <!-- ****************************************High Lighter PLUGINs**************************************** -->
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<% include partials/header_1.html %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+  <!-- ****************************************Google PLUGINs**************************************** -->
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
+
+  <!-- ****************************************My PLUGINs**************************************** -->
+  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  <script src="js/datatable.js"></script>
+  <script src="js/dashboard.js"></script>
+
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+$(document).ready(function(){
+   $("#ustable").dataTable({
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": true,
+        "iDisplayLength": 5 
+    });
+     $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
+     $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
+
+   $(".collapse").hide();
+
+  
+   $("a").click(function(){
+     $(".collapse").hide();
+   });
+  $("span").click(function(){
+     $(".collapse").hide();
+   });
+
+})
+
+$(document).on("click",".head",function() { 
+     var id = $(this).data('id');
+    $("#collapse-"+id).toggle("slow");
+  });
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
+<script>
+
+</script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../css/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+
+<% include partials/loginheader.html %>
   <script src="js/blog.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/blog.css">
 
   <script>hljs.initHighlightingOnLoad();</script>
-  <script>
 
-</script>
-<html>
-<div style="padding: 4%">
-<button style="float: right;" id="submit">Save Post</button>
+<!-- Blog entries -->
+<div class="w3-col l8 s12" >
+  <!-- Blog entry -->
+  
+
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" style="padding: 2%">
+  <h1>Welcome to Shubham Blog!</h1>
+  <h5>What you would like to pot today?</h5>
+ <button style="float: right;" id="submit">Save Post</button>
+
 <form method="post" action="addblog">
     <input type="text" name="title" id="title" class="titleInp" placeholder=" Please enter title of what this post is about...!"><br><br>
     <input type="hidden" name="category" id="categoryinp" value="other" placeholder="category">
@@ -35,37 +119,72 @@
     <input type="hidden" name="views" id="views" VALUE="0">
     <input type="hidden" name="long" id="long" VALUE="">
     <input type="hidden" name="lat" id="lat" VALUE="">
-    <textarea style="display:none;" rows="3" cols="43" name="blogdata" id="blogdata" ></textarea>
+    <textarea style="display:none;" rows="4" cols="43" name="blogdata" id="blogdata" ></textarea>
     <input type="submit"  style="display:none;" id="saveblog" value="Save Blog">
     </form>
-<textarea rows="13"  style="display:none;" cols="43" id="final" class="final"></textarea>
-  <button class="add_field_button">Add More Fields</button><br><br>
-  <div id="scrollable">
+    <textarea rows="13"  style="display:none;" cols="43" id="final" class="final"></textarea>
+  <br><br><button class="add_field_button">Add More Fields</button><br><br><br>
+     <div id="scrollable">
 
 <div class="input_fields_wrap">
     <div class="section group">
       <div class="col span_1_of_2">
-        <textarea rows="3" cols="43" id="cont0" class="cont" placeholder="Section Description"></textarea>
+        <textarea rows="4" cols="33" id="cont0" class="cont" placeholder="Section Description"></textarea>
       </div>
       <div class="col span_1_of_2">
-        <textarea rows="3" cols="43" id="code0" class="code" placeholder="Section Code"></textarea>
+        <textarea rows="4" cols="13" id="code0" class="code" placeholder="Section Code"></textarea>
       </div>
     </div>
   </div>
 </div>
-<br><br>
 <div id="previewSample">
 <h1 id="lookslikemsg">Your blog will look like this</h1>
-<h2 id="showtitle"></h1>
+<h2 id="showtitle"></h2>
 <h2 id="showcategory"></h2>
   <div id="preview">
-  	
+    
   </div>
 
     <div id="sample"></div>
-		<p id="p-id-0" class="blogContent"></p>
-		<pre id="pre-id-0" class="blogCodeContent"><code class="javascript" id="code-id-0"></code></pre>
+    <p id="p-id-0" class="blogContent"></p>
+    <pre id="pre-id-0" class="blogCodeContent"><code class="javascript" id="code-id-0"></code></pre>
+  </div></h2></div>
+<!-- END BLOG ENTRIES -->
+</div>
+<script type="text/javascript">
+  
+  $(document).on("click",".w3-padding-16",function() { 
+      var id = $(this).attr('id');
+    alert(id);
+    window.location = "http://localhost:3000/dashboard/"+id;
+});
 
-</div>
-</div>
+</script>
+  
+    <% include partials/tiles/rightsidedown.html %>
+<!-- Footer -->
+
+<div id="popup1" class="overlay">X
+  <div class="popup">
+    <div class="content"><h1>Java & NodeJS blog</h1><h3>by Shubham Yeole</h3>
+    <a class="close" href="#"> &times;</a>
+    </div>
+      <div id='gmap_canvas' style='height:440px;width:100%;'></div>
+    
+  </div>
+<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
+      </div>
+    </div>
+    
+</div><footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <button class="w3-btn w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+  <button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+</body>
 </html>
+

@@ -34,14 +34,13 @@ $("#saveblog").delay(1000).click();
             $(wrapper).append('<div class="section group" id="field'+count+'"><div class="col span_1_of_2"><textarea rows="3" cols="44" id="cont'+count+'" placeholder="Section Description" class="cont"></textarea></div><div class="col span_1_of_2"><textarea rows="3" cols="44" id="code'+count+'" placeholder="Section Code" class="code" ></textarea><a href="#" class="remove_field" id='+count+'>Remove</a></div></div></div>'); //add input box
 
             var codecontentss = $("#pre-id-0").clone().attr("id", "pre-id-"+count);
-            var blogcontent = $("#p-id-0").clone().attr("id", "p-id-"+count).text('');
-            codecontentss.find('#code-id-0').attr('id','code-id-'+count).text('');
-            $("#preview").after(codecontentss);
-
-            $("#preview").after(blogcontent);
-        $('#scrollable').scrollTop($('#scrollable')[0].scrollHeight);
-        var d = $('#scrollable');
-        d.scrollTop(d.prop("scrollHeight"));
+            var blogcontent = $("#p-id-0").clone().attr("id", "p-id-"+count).text(count);
+            codecontentss.find('#code-id-0').attr('id','code-id-'+count).text(count);
+            $("#preview").append(blogcontent);
+            $("#preview").append(codecontentss);
+            $('#scrollable').scrollTop($('#scrollable')[0].scrollHeight);
+            var d = $('#scrollable');
+            d.scrollTop(d.prop("scrollHeight"));
             count++;
 
         }
