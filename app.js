@@ -412,7 +412,7 @@ app.get('/prism/', function(req, res){
  
 });
 
-app.get('/blog/', requireLogin, function(req, res) {
+app.get('/blog/', function(req, res) {
 
     res.render('blog',{session : "true",users: req.session.users});
      
