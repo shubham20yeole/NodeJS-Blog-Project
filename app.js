@@ -339,6 +339,7 @@ console.log(datetime);
     var newBlog = {
       title: req.body.title,
       category: req.body.category,
+      imagename: req.body.category.toLowerCase(),
       like: req.body.like,
       dislike: req.body.dislike,
       views: req.body.views,
