@@ -269,6 +269,9 @@ app.get('/searching', function(req, res){
   console.log("hello");
  res.send("WHEEE");
 });
+app.get('/email', function(req, res){
+   res.render('emailme.ejs');
+});
 
 app.get('/ajax/', function(req, res) {
    res.render('ajax.ejs');
