@@ -472,8 +472,8 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
 app.post('/send',function(req,res){
   var message = req.body.message;
   var email = req.body.email;
-  var long = req.body.email;
-  var lat = req.body.email;
+  var long = req.body.long;
+  var lat = req.body.lat;
   var signature = "Thank you,<br>Shubham Yeole,<br>Full Stack Developer,<br>Phone: +1(201) 887-5323<br>";
   var text1 = "Hello "+email+"<br>";
   var text2 = "Thank you for contacting me. I appriciate your time for reviewing my blog<br><br>";
