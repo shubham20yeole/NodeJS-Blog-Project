@@ -14,6 +14,5 @@ $.post( "/send/", { email: email, message: message, long: long, lat: lat, date: 
 
   
 $(document).ready(function(){
- alert();
 });
 
