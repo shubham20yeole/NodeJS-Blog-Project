@@ -252,9 +252,7 @@ app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
 
   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
-  db.comments.find({ blogid: req.params.id }, function (err, comments) {
-      res.render("fullblog",{blog: blog, comments: comments});
-    });
+      res.render("fullblog",{blog: blog});
   });
 });
 
