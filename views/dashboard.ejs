@@ -28,6 +28,8 @@
   <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
   <script src="js/datatable.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/emailme.js"></script>
+  <script src="js/navigator.js"></script>
 
 
   <script>hljs.initHighlightingOnLoad();</script>
@@ -174,15 +176,14 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
 
     <div class="w3-container">
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
-        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      <div class="w3-row">
-        <div class="w3-col m8 s12">
-          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
-        </div>
-        <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
-        </div>
+      <div id="emailme">
+
+        <input type="text" name="email" id="email">
+        <input type="text" name="long" id="long">
+        <input type="text" name="lat" id="lat">
+        <textarea name = "message" id="emailmessage"></textarea>
+        <input type="submit" id="submitEmail">
+
       </div>
     </div>
   </div>

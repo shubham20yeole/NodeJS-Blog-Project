@@ -78,31 +78,6 @@ app.get('/', function(req, res){
 	
 });
 // 
-app.post('/sendemail', function(request, response) {
-  var message = "Hello I am shubham";
-  var recipients = [{ address: "shubham20.yeole@gmail.com" }];
-   sp.transmissions.send({
-    transmissionBody: {
-      content: {
-        from: { 'name': 'JIN', 'email': 'shubham20.yeole@gmail.com'},
-        subject: 'Heroku Node.js Example',
-        html: '<html><body>' + message + '</body></html>',
-        message: 'required field is missing',
-        description: 'content object or template_id required',
-        code: '1400',
-        template_id :'test'
-      },
-      recipients: recipients
-    }
-  }, function(err, apiResponse) {
-    if(err) {
-      response.json(err);
-    } else {
-      response.json(apiResponse.body);
-    }
-  });
-});
-
 // ********************************************************LINKEDIN*******************************************
 
 
@@ -494,16 +469,39 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
         pass : "Shubham4194"
     }
 }));
-app.get('/send',function(req,res){
-    var mailOptions={
+app.post('/send',function(req,res){
+  var message = req.body.message;
+  var email = req.body.email;
+
+      var mailOptions={
+        from : "shubham20.yeole@gmail.com",
+        to : email,
+        subject : "Your Subject",
+        text : "Your Text",
+        html : "<b>"+message+"</b>",
+    }
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function(error, response){
+        if(error){
+            console.log(error);
+            res.end("error");
+        }else{
+            console.log(response.response.toString());
+            console.log("Message sent: " + response.message);
+            res.end("sent");
+        }
+    });
+
+
+      var mailOptions1={
         from : "shubham20.yeole@gmail.com",
         to : "shubham20.yeole@gmail.com",
         subject : "Your Subject",
         text : "Your Text",
-        html : "HTML GENERATED",
+        html : "Email sent from "+email+"<br><br><b>"+message+"</b>",
     }
-    console.log(mailOptions);
-    smtpTransport.sendMail(mailOptions, function(error, response){
+    console.log(mailOptions1);
+    smtpTransport.sendMail(mailOptions1, function(error, response){
         if(error){
             console.log(error);
             res.end("error");
