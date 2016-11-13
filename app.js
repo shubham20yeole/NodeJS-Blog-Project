@@ -141,16 +141,26 @@ app.post('/users/add', function(req, res){
 
 	var errors = req.validationErrors();
 	var datetime = new Date();
+    var loginstatus = null;
+      if(req.session.users==null){
+          loginstatus = "false";
+        }else{
+          loginstatus = "true";
+        }
  db.users.findOne({ email: req.body.email }, function(err, users) {
     if (!users) {
           var students = "Shubham is Pace CS student";
           if(errors){
-              console.log("Fails"+errors);
-                  res.render("index",{
-                  title : students,
-                  users: users,
-                  errors: errors
+               var blogviewmsg = "You are viewing blogs of all category";
+ 
+                db.blog.find(function (err, docs) {
+                    res.render("dashboard.ejs",{
+                    blog: docs,
+                    users: req.session.users,
+                    message: blogviewmsg,
+                    session: loginstatus
                 });
+        })
         }else{
               var psd = req.body.password;
               if(req.body.password==null){
@@ -177,7 +187,7 @@ app.post('/users/add', function(req, res){
                 console.log(err);
               }
         req.session.users = newUser;
-        res.redirect('/dashboard');
+        res.redirect('/blog');
   });
   }
       
