@@ -259,9 +259,14 @@ app.get('/blog/getcomment/:id', function(req, res){
 
 app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
-
+ var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+  }else{
+      loginstatus = "true";
+  }
   db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
-      res.render("fullblog",{blog: blog});
+      res.render("fullblog",{session: loginstatus, blog: blog});
   });
 });
 
@@ -270,7 +275,13 @@ app.get('/searching', function(req, res){
  res.send("WHEEE");
 });
 app.get('/email', function(req, res){
-   res.render('emailme.ejs');
+  var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+      }else{
+    loginstatus = "true";
+  }
+   res.render('emailme.ejs',{session: loginstatus});
 });
 
 app.get('/ajax/', function(req, res) {
@@ -309,12 +320,18 @@ function requireLogin (req, res, next) {
 
 app.get('/dashboard', function(req, res) {
   var blogviewmsg = "You are viewing blogs of all category";
+  var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+      }else{
+    loginstatus = "true";
+  }
   db.blog.find(function (err, docs) {
     res.render("dashboard.ejs",{
     blog: docs,
     users: req.session.users,
     message: blogviewmsg,
-    session: "true"
+    session: loginstatus
   });
   } )
 });
@@ -332,23 +349,38 @@ app.get('/dashboard', function(req, res) {
 // });
 
 app.get('/dashboard/:id', function(req, res) {
+
+  var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+      }else{
+    loginstatus = "true";
+  }
+
    var blogviewmsg = "You are viewing blogs of "+req.params.id+" category";
    db.blog.find({ imagename: req.params.id }, function (err, docs) {
     res.render("dashboard2.ejs",{
     blog: docs,
     users: req.session.users,
     message: blogviewmsg,
-    session: "true"
+    session: loginstatus
   });
   } )
 });
 
 app.get('/clients/', function(req, res){
+  var loginstatus = null;
+  
+  if(req.session.users==null){
+    loginstatus = "false";
+  }else{
+      loginstatus = "true";
+  }
   db.users.find(function (err, docs) {
     res.render("admin.ejs",{
     errmsg : errmsg,
     users: docs,
-     session : "false"
+    session : loginstatus
   });
   } )
   
@@ -357,7 +389,7 @@ app.get('/logout/', function(req, res) {
 	console.log("I am here");
 
   req.session.reset();
-  res.redirect('/');
+  res.redirect('/dashboard');
 });
 
 app.use(session({
@@ -421,19 +453,16 @@ app.get('/prism/', function(req, res){
  
 });
 
-app.get('/blog/', function(req, res) {
-  var postmark = require("postmark");
-var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
-client.sendEmail({
-    "From": "sender@example.org",
-    "To": "sy06736n@pace.edu",
-    "Subject": "Test", 
-    "TextBody": "Hello from Postmark!"
-});
-    res.render('blog',{session : "true",users: req.session.users});
-     
-  
-});
+app.get('/blog/', requireLogin, function(req, res) {
+
+  var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+  }else{
+      loginstatus = "true";
+  }
+ res.render('blog',{session : loginstatus, users: req.session.users});
+ });
 
 app.get('/googlemap/', function(req, res) {
 
