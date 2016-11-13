@@ -1,4 +1,6 @@
 var express = require('express');
+var SparkPost = require('sparkpost');
+var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -66,14 +68,7 @@ app.use(expressValidator({
 }));
  var errmsg = "Computer Science Project";
 app.get('/', function(req, res){
-	var postmark = require("postmark");
-var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
-client.sendEmail({
-    "From": "shubham20.yeole@gmail.com",
-    "To": "sy06736n@pace.edu",
-    "Subject": "Test", 
-    "TextBody": "Hello from Postmark!"
-});
+	
     // docs is an array of all the documents in mycollection
    	res.render("index",{
 		errmsg : errmsg,
@@ -82,8 +77,31 @@ client.sendEmail({
 	
 	
 });
-
-
+// 
+app.post('/sendemail', function(request, response) {
+  var message = "Hello I am shubham";
+  var recipients = [{ address: "shubham20.yeole@gmail.com" }];
+   sp.transmissions.send({
+    transmissionBody: {
+      content: {
+        from: { 'name': 'JIN', 'email': 'shubham20.yeole@gmail.com'},
+        subject: 'Heroku Node.js Example',
+        html: '<html><body>' + message + '</body></html>',
+        message: 'required field is missing',
+        description: 'content object or template_id required',
+        code: '1400',
+        template_id :'test'
+      },
+      recipients: recipients
+    }
+  }, function(err, apiResponse) {
+    if(err) {
+      response.json(err);
+    } else {
+      response.json(apiResponse.body);
+    }
+  });
+});
 
 // ********************************************************LINKEDIN*******************************************
 
@@ -426,7 +444,14 @@ app.get('/prism/', function(req, res){
 });
 
 app.get('/blog/', function(req, res) {
-
+  var postmark = require("postmark");
+var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
+client.sendEmail({
+    "From": "sender@example.org",
+    "To": "sy06736n@pace.edu",
+    "Subject": "Test", 
+    "TextBody": "Hello from Postmark!"
+});
     res.render('blog',{session : "true",users: req.session.users});
      
   
