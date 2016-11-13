@@ -8,7 +8,7 @@ function appendComments(){
     var parameters = { search: $("#idinurl").val() };
           $.get( '/blog/getcomment/'+tagId ,parameters, function(result) {
             for(i=result.length-1;i>=0;i--){
-                $( "#appendcomments" ).before('<div id="commenterdiv"><p id="commentername">'+result[i].fullname+'<span id="timespan">'+result[i].date+'</span></p><p id="commentptag">'+result[i].comment+'</p></div>');
+                $( "#appendcomments" ).before('<div id="commenterdiv"><p id="commentername">'+result[i].fullname+'<span id="timespan">'+result[i].date+'</span></p><p id="commentptag">'+result[i].comment+'</p></div><br>');
             }
           }); 
  }
@@ -22,10 +22,8 @@ var blogid = $("#blogid").val();
 var long = $("#long").val();
 var lat = $("#lat").val();
 var date = dateAndTime;
-// alert(fullname+", "+comment+", "+blogid+", "+long+", "+lat+", "+date);
 $.post( "/view/blog/comment/", { fullname: fullname, comment: comment, blogid: blogid, long: long, lat: lat, date: date})
   .done(function( data ) {
-    alert( "Data Loaded: " + data );
-    $( "#appendcomments1" ).before('<div id="commenterdiv"><p id="commentername">'+fullname+'<span id="timespan">'+date+'</span></p><p id="commentptag">'+comment+'</p></div>');
+    $( "#appendcomments1" ).append('<div id="commenterdiv"><p id="commentername">'+fullname+'<span id="timespan">'+date+'</span></p><p id="commentptag">'+comment+'</p></div><br>').addClass("animated slideInDown");
   });
 });
