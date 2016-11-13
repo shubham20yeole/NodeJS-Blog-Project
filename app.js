@@ -425,7 +425,7 @@ console.log(datetime);
       if(err){
         console.log(err);
       }
-    res.redirect('/dashboard');
+    res.redirect('/blog');
   });
 });
 app.post('/view/blog/comment', function(req, res){
@@ -453,7 +453,7 @@ app.get('/prism/', function(req, res){
  
 });
 
-app.get('/blog/', requireLogin, function(req, res) {
+app.get('/blog/', function(req, res) {
 
   var loginstatus = null;
   if(req.session.users==null){
@@ -480,7 +480,7 @@ app.post('/login', function(req, res) {
       if (req.body.password === users.password) {
         // sets a cookie with the user's info
         req.session.users = users;
-        res.redirect('/dashboard');
+        res.redirect('/blog');
       } else {
         errmsg = 'Incorrect Password...';
         res.redirect('/');

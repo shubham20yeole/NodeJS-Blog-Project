@@ -95,7 +95,13 @@ and is wrapped around the whole page content, except for the footer in this exam
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white" style="padding: 2%">
   <h1>Welcome to Shubham Blog!</h1>
-  <h5>What you would like to pot today?</h5>
+  <h5>What you would like to post today?</h5>
+  <% if(session=='false'){%>
+      <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up / Sign In</a>
+  <%}else{%>
+  
+   
+    
  <button style="float: right;" id="submit">Save Post</button>
 
 <form method="post" action="addblog">
@@ -149,7 +155,9 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div id="preview">
     
   </div>
-  </div></h2></div>
+  </div></h2>
+<%}%>
+  </div>
 
 <!-- END BLOG ENTRIES -->
 </div>
