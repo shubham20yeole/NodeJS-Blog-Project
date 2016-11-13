@@ -5,6 +5,12 @@
 
 
 }
+.readmore{
+  padding: 10px;
+  background-color: #898989;
+  color: white;
+  font-weight: bold;
+}
 body{
   background-color: white;
 }

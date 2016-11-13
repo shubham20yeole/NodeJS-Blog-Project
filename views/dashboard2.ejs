@@ -107,7 +107,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 				<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>	&nbsp;	&nbsp;
 				<button class="likeUser" data-id="<%= blog._id %>"><img src="/images/like.jpg"  width="22" height="22" /><span id="like-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.like %></span></button>	&nbsp;	&nbsp;
 				<button class="dislikeUser" data-id="<%= blog._id %>"><img src="../images/dislike.jpg"  width="22" height="22" /><span id="dislike-<%= blog._id %>" data-id="<%= blog._id %>" class="addspacing"><%= blog.dislike %></span></button>	&nbsp;	&nbsp;
-				<span id="views-<%= blog._id %>" data-id="<%= blog._id %>" class="viewsUser"><button class="viewbutton"><img src="images/dislike.jpg"  width="22" height="22" /></button> </span><a href="/view/blog/<%= blog._id %>">view full blog</a><br><br>
+				<a class="readmore" href="/view/blog/<%= blog._id %>">READ MORE</a><br><br>
 				<div class="scrollable" style><%- blog.data %></div>
 			</div>
 			
@@ -166,21 +166,20 @@ and is wrapped around the whole page content, except for the footer in this exam
 
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
-  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
     <div class="w3-container w3-padding-8">
-      <h3><b>BLOG ENTRY</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
+      <h3><b>Comming soon</b></h3>
+      <h5>By Shubham Yeole</h5>
+      <h5>For more info contact me at +(201) 887-5323/shubham20.yeole@gmail.com</h5>
     </div>
 
     <div class="w3-container">
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
-        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+     
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
+          <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><a href="/"><b>Home</b></a></button></p>
         </div>
         <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+          <p></p>
         </div>
       </div>
     </div>
@@ -226,9 +225,17 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!-- Footer -->
 <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-  <button class="w3-btn w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-  <button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+ <center><p style="font-size: 2em; font-weight: bold; color: #cecece">
+ &copy; 2016 java-nodejs-blog.herokuapp.com. All Rights Reserved.
+ </p>
+ <p>Developed by: Shubham Yeole</p>
+ <p>+(201) 887-5323</p>
+ <p>10 Front street,</p>
+ <p>Jersey City</p>
+ <p>07302 NJ</p>
+ <p>USA</p>
+
+ </center>
 </footer>
 <div id="popup1" class="overlay">X
 	<div class="popup">

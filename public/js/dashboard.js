@@ -19,7 +19,7 @@ function dislikeUser(){
     var parameters = { search: $(this).data('id') };
 
           $.get( '/users/dislike/'+$(this).data('id'),parameters, function(data2) {
-            $("#dislike-2-"+tagId).text(data2);
+            $("#dislike-"+tagId).text(data2);
             $("#dislike-2-"+tagId).text(data2);
 
       }); 

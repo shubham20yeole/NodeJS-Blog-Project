@@ -23,42 +23,14 @@
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAWPMDGHGh-KUNMkjSIlMBD1JMtTfbxk&callback=initMap"></script>
 
   <!-- ****************************************My PLUGINs**************************************** -->
-  <link rel="stylesheet" type="text/css" href="/css/fullblog.css">
 
-  <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-  <script src="js/datatable.js"></script>
-  <script src="js/dashboard.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/emailme.css">
+
 
 
   <script>hljs.initHighlightingOnLoad();</script>
 
-<script>
-$(document).ready(function(){
-   $("#ustable").dataTable({
-        "sPaginationType": "full_numbers",
-        "bJQueryUI": true,
-        "iDisplayLength": 5 
-    });
-     $(".dataTables_length select").addClass("selectEntry").attr("placeholder", "Type here to search").append('<br><br><br><br>');
-     $(".dataTables_filter input").addClass("searchInput").attr("placeholder", "Type here to search");;
 
-   $(".collapse").hide();
-
-  
-   $("a").click(function(){
-     $(".collapse").hide();
-   });
-  $("span").click(function(){
-     $(".collapse").hide();
-   });
-
-})
-
-$(document).on("click",".head",function() { 
-     var id = $(this).data('id');
-    $("#collapse-"+id).toggle("slow");
-  });
-</script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script><script type="text/javascript">
 </script>
 <script>
@@ -102,10 +74,10 @@ and is wrapped around the whole page content, except for the footer in this exam
        <div id="returnmessage"></div>
       <div id="emailme">
 
-        <input type="text" name="email" id="email" placeholder="yourname@domain.com" required="">
+        <input type="text" name="email" class="email" id="email" placeholder="yourname@domain.com" required="">
         <input type="hidden" name="long" id="long">
         <input type="hidden" name="lat" id="lat"><br><br>
-        <textarea name = "message" id="emailmessage" placeholder="Email Body" required=""></textarea><br><br>
+        <textarea name = "message" class="emailmessage" id="emailmessage" placeholder="Email Body" required=""></textarea><br><br>
         <input type="submit" id="submitEmail"><br><br>
 
       </div>
@@ -117,7 +89,6 @@ and is wrapped around the whole page content, except for the footer in this exam
   
   $(document).on("click",".w3-padding-16",function() { 
       var id = $(this).attr('id');
-    alert(id);
     window.location = "http://localhost:3000/dashboard/"+id;
 });
 
@@ -142,11 +113,22 @@ and is wrapped around the whole page content, except for the footer in this exam
       </div>
     </div>
     
-</div><footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-  <button class="w3-btn w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-  <button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</div>
+
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+ <center><p style="font-size: 2em; font-weight: bold; color: #cecece">
+ &copy; 2016 java-nodejs-blog.herokuapp.com. All Rights Reserved.
+ </p>
+ <p>Developed by: Shubham Yeole</p>
+ <p>+(201) 887-5323</p>
+ <p>10 Front street,</p>
+ <p>Jersey City</p>
+ <p>07302 NJ</p>
+ <p>USA</p>
+
+ </center>
 </footer>
+
 </body>
 </html>
 
