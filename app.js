@@ -160,8 +160,8 @@ app.post('/users/add', function(req, res){
                     message: blogviewmsg,
                     session: loginstatus
                 });
-        })
-        }else{
+              })
+              }else{
               var psd = req.body.password;
               if(req.body.password==null){
                 psd = "w$9jKp3e$!Zy_Ned";
@@ -200,7 +200,7 @@ app.post('/users/add', function(req, res){
             if (req.body.email+"w$9jKp3e$!Zy_Ned" === users.fbid) {
               // sets a cookie with the user's info
              req.session.users = users;
-              res.redirect('/dashboard');
+              res.redirect('/blog');
             } else {
               errmsg = 'Password does not match';
               res.redirect('/');
