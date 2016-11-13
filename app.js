@@ -66,7 +66,14 @@ app.use(expressValidator({
 }));
  var errmsg = "Computer Science Project";
 app.get('/', function(req, res){
-	
+	var postmark = require("postmark");
+var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
+client.sendEmail({
+    "From": "sender@example.org",
+    "To": "sy06736n@pace.edu",
+    "Subject": "Test", 
+    "TextBody": "Hello from Postmark!"
+});
     // docs is an array of all the documents in mycollection
    	res.render("index",{
 		errmsg : errmsg,
@@ -452,14 +459,7 @@ app.post('/login', function(req, res) {
 
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
-var postmark = require("postmark");
-var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
-client.sendEmail({
-    "From": "sender@example.org",
-    "To": "sy06736n@pace.edu",
-    "Subject": "Test", 
-    "TextBody": "Hello from Postmark!"
-});
+
 var smtpTransport = nodemailer.createTransport(smtpTransport({
     host : "Smtp.gmail.com",
     secureConnection : false,
