@@ -250,11 +250,10 @@ app.get('/users/dislike/:id', function(req, res){
 });
 app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
-  db.comments.find({ blogid: req.params.id }, function (err, comments) {
- });
-  db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {   
+
+  db.blog.findOne({ _id: ObjectId(req.params.id)}, function (err, blog) {
+      res.render("fullblog",{blog: blog});
   });
-    res.render("fullblog",{blog: blog, comments: comments});
 });
 
 app.get('/searching', function(req, res){
