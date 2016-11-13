@@ -14,11 +14,6 @@ $.post( "/send/", { email: email, message: message, long: long, lat: lat, date: 
 
   
 $(document).ready(function(){
-  $(".emailme").hide();
-  $("#clickme").on('click', function({
-      
-  });
-   
-  
+ alert();
 });
 
