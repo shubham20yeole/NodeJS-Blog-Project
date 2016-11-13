@@ -404,6 +404,13 @@ app.post('/view/blog/comment/:id', function(req, res){
   });
 });
 
+app.post('/blog/getcomment/:id', function(req, res){
+    console.log("In get comment method: "+req.params.id);
+    db.comments.find({ _id: req.params.id}, function(err, result){
+     res.send(result);
+  });
+});
+
 app.get('/prism/', function(req, res){
 
    res.render("prism.ejs");
