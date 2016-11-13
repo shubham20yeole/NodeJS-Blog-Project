@@ -134,3 +134,6 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
 .lookslikemsg{}
 #showtitle{ color: #FF5722; font-size: 2em;}
 #showcategory{ color: #9E9E9E; }
+.loginButton{background-color: black; color: white; padding: 3%; cursor: pointer;}
+.loginButton:hover{background-color: #f4f4f4; color: black;}
+.errmsg{ font-size: 2em; }

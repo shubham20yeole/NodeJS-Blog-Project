@@ -95,12 +95,19 @@ and is wrapped around the whole page content, except for the footer in this exam
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white" style="padding: 2%">
   <h1>Welcome to Shubham Blog!</h1>
-  <h5>What you would like to post today?</h5>
   <% if(session=='false'){%>
-      <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up / Sign In</a>
+      <p style="color: red">
+        Please Sign In or Sign Up to write new posts.<br><br>
+        <span class="errmsg">Use login with facebook for quick login.</span>
+      </p>
+<br><br><br>
+
+      <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="loginButton">Sign Up / Sign In / Login with Facebook</a>
+      <br><br><br>
   <%}else{%>
-  
-   
+
+     <h5>What you would like to post today?</h5>
+
     
  <button style="float: right;" id="submit">Save Post</button>
 
