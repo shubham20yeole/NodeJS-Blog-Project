@@ -93,16 +93,17 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div class="w3-container w3-padding-8">
       <h3><b>Comments</b></h3>
       <h5 id="scrolldown">Add a public comment:<span class="w3-opacity">efrdbf</span></h5>
-      <form method="post" action="/view/blog/comment/<%= blog._id %>">
       <input type="text" name="firstname" id="firstname" VALUE="" placeholder="First Name">
       <input type="text" name="lastname" id="lastname" VALUE="" placeholder="Last Name"><br><br>
+      <input type="hidden" name="blogid" id="blogid" VALUE="<%= blog._id %>">
       <input type="hidden" name="url" id="url" VALUE="">
       <input type="hidden" name="long" id="long" VALUE="">
       <input type="hidden" name="lat" id="lat" VALUE="">
       <textarea rows="4" cols="42" name="comment" id="comment" placeholder="Add a public comment:" ></textarea><br><br>
-      <input type="submit" value="SUBMIT">
-      </form>
+      <input type="submit" id="submitcomment" value="SUBMIT">
       <hr>
+      <div id="appendcomments1"></div>
+      <div id="appendcomments"></div>
     </div>
 
     <div class="w3-container">

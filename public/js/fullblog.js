@@ -4,37 +4,28 @@ $(document).ready(function(){
 })
 
 function appendComments(){
-  var id = $("#idinurl").val();
-      var parameters = { search: id };
+   var tagId = $("#idinurl").val();
+    var parameters = { search: $("#idinurl").val() };
+          $.get( '/blog/getcomment/'+tagId ,parameters, function(result) {
+            for(i=result.length-1;i>=0;i--){
+                $( "#appendcomments" ).before('<div id="commenterdiv"><p id="commentername">'+result[i].fullname+'<span id="timespan">'+result[i].date+'</span></p><p id="commentptag">'+result[i].comment+'</p></div>');
+            }
+          }); 
+ }
+$(document).on("click","#submitcomment",function() { 
 
-  $.get( '/blog/getcomment/'+id,parameters, function(comments) {
-      alert(comments.comment);
-    });
-
-}
-function deleteUser(){
-   var person = prompt("This is an admin action, Please enter your admin password: ", "");
-	if(person == "admin20"){
-		var parameters = { search: $(this).data('id') };
-
-       		$.get( '/users/delete/'+$(this).data('id'),parameters, function(users) {
-
-       			$('#'+users+" td").addClass("animated hinge");
-       			window.setTimeout(function(){$('#'+users).hide();}, 2200);
-
-    		// $("#userbody tr").remove();
-
-      //  		for(i=0;i<users.length;i++){
-
-      //  			$( "#userbody" ).append( "<tr><td>"+users[i].firstname+" "+users[i].lastname+"</td><td>"+users[i].email+"</td><td>"+users[i].phone+"</td><td><a href="+users[i].website+" target='_blank'>Click me</a></td><td>"+users[i].password+"</td><td>"+users[i].fbid+"</td><td>"+users[i].type+"</td><td><a class='deleteUser' data-id="+users[i]._id+" href='#'> delete</a></td></tr>" );
-       		
-      //  		}
-     	});
-
-	}else{
-
-		return false;
-
-	}
-	
-}
+var d = new Date();
+var dateAndTime = "Date: "+d.getMonth()+"/"+d.getDate()+"/"+d.getFullYear()+", Time: "+d.getHours()+":"+d.getMinutes();
+var fullname = $("#firstname").val()+" "+$("#lastname").val();
+var comment = $("#comment").val();
+var blogid = $("#blogid").val();
+var long = $("#long").val();
+var lat = $("#lat").val();
+var date = dateAndTime;
+// alert(fullname+", "+comment+", "+blogid+", "+long+", "+lat+", "+date);
+$.post( "/view/blog/comment/", { fullname: fullname, comment: comment, blogid: blogid, long: long, lat: lat, date: date})
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+    $( "#appendcomments1" ).before('<div id="commenterdiv"><p id="commentername">'+fullname+'<span id="timespan">'+date+'</span></p><p id="commentptag">'+comment+'</p></div>');
+  });
+});

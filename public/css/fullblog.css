@@ -22,3 +22,7 @@ li a {
 li a:hover {
     background-color: #111111;
 }
+#commenterdiv{padding: 1%;}
+#commentername{}
+#timespan{float: right;}
+#commentptag{}

@@ -248,6 +248,15 @@ app.get('/users/dislike/:id', function(req, res){
   });
     });
 });
+
+app.get('/blog/getcomment/:id', function(req, res){
+    console.log("In get comment method: "+req.params.id);
+  db.comments.find(function (err, docs) {
+     res.send(docs);
+  });
+});
+
+
 app.get('/view/blog/:id', function(req, res){
   console.log(req.params.id);
 
@@ -384,32 +393,24 @@ console.log(datetime);
     res.redirect('/dashboard');
   });
 });
-app.post('/view/blog/comment/:id', function(req, res){
-    var datetime = new Date();
-    var url = req.body.url;
-    console.log(datetime);
+app.post('/view/blog/comment', function(req, res){
+
     var newComment = {
       comment: req.body.comment,
-      fullname: req.body.firstname +" " +req.body.lastname,
-      blogid: req.params.id,
+      fullname: req.body.fullname,
+      blogid: req.body.blogid,
       long: req.body.long,
       lat: req.body.lat,
-      date: datetime
+      date: req.body.date
     }
     db.comments.insert(newComment, function(err, result){
       if(err){
         console.log(err);
       }
-    res.redirect(url+"#scrolldown");
+    res.send("Done");
   });
 });
 
-app.post('/blog/getcomment/:id', function(req, res){
-    console.log("In get comment method: "+req.params.id);
-    db.comments.find({ _id: req.params.id}, function(err, result){
-     res.send(result);
-  });
-});
 
 app.get('/prism/', function(req, res){
 
