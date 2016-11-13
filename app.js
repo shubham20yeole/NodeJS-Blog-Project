@@ -69,7 +69,7 @@ app.get('/', function(req, res){
 	var postmark = require("postmark");
 var client = new postmark.Client("5a86a9e9-78b6-43e2-8cc8-4c16218236b6");
 client.sendEmail({
-    "From": "sender@example.org",
+    "From": "shubham20.yeole@gmail.com",
     "To": "sy06736n@pace.edu",
     "Subject": "Test", 
     "TextBody": "Hello from Postmark!"
