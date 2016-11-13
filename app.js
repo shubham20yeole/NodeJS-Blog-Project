@@ -449,6 +449,40 @@ app.post('/login', function(req, res) {
     }
   });
 });
+
+var nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport")
+
+var smtpTransport = nodemailer.createTransport(smtpTransport({
+    host : "Smtp.gmail.com",
+    secureConnection : false,
+    port: 587,
+    auth : {
+        user : "shubham20.yeole@gmail.com",
+        pass : "Shubham4194"
+    }
+}));
+app.get('/send',function(req,res){
+    var mailOptions={
+        from : "shubham20.yeole@gmail.com",
+        to : "shubham20.yeole@gmail.com",
+        subject : "Your Subject",
+        text : "Your Text",
+        html : "HTML GENERATED",
+    }
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function(error, response){
+        if(error){
+            console.log(error);
+            res.end("error");
+        }else{
+            console.log(response.response.toString());
+            console.log("Message sent: " + response.message);
+            res.end("sent");
+        }
+    });
+});
+
 app.listen(port, function() {
   console.log('Listening on port ' + port)
 })

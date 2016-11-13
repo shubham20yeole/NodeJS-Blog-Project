@@ -10,6 +10,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "body-parser": "^1.15.2",
+    "campaign": "^4.1.6",
     "connect-ensure-login": "^0.1.1",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
@@ -20,6 +21,7 @@
     "mongodb": "^2.2.11",
     "mongojs": "^2.4.0",
     "node-linkedin": "^0.5.4",
+    "nodemailer": "^2.6.4",
     "passport": "^0.3.2",
     "passport-auth0": "^0.5.2",
     "passport-facebook": "^2.0.0",
