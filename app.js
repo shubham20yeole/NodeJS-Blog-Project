@@ -486,7 +486,7 @@ var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
 
 var smtpTransport = nodemailer.createTransport(smtpTransport({
-    host : "Smtp.gmail.com",
+    host : "smtp.sendgrid.net.",
     secureConnection : false,
     port: 587,
     auth : {
