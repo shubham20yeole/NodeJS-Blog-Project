@@ -322,7 +322,7 @@ app.get('/dashboard', function(req, res) {
 app.get('/dashboard/:id', function(req, res) {
    var blogviewmsg = "You are viewing blogs of "+req.params.id+" category";
    db.blog.find({ imagename: req.params.id }, function (err, docs) {
-    res.render("dashboard.ejs",{
+    res.render("dashboard2.ejs",{
     blog: docs,
     users: req.session.users,
     message: blogviewmsg,
