@@ -68,13 +68,21 @@ app.use(expressValidator({
 }));
  var errmsg = "Computer Science Project";
 app.get('/', function(req, res){
-	
-    // docs is an array of all the documents in mycollection
-   	res.render("index",{
-		errmsg : errmsg,
-    session : "false"
-	});
-	
+	 var blogviewmsg = "You are viewing blogs of all category";
+  var loginstatus = null;
+  if(req.session.users==null){
+    loginstatus = "false";
+      }else{
+    loginstatus = "true";
+  }
+  db.blog.find(function (err, docs) {
+    res.render("dashboard.ejs",{
+    blog: docs,
+    users: req.session.users,
+    message: blogviewmsg,
+    session: loginstatus
+  });
+  } )
 	
 });
 // 
