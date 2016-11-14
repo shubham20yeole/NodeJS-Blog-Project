@@ -8,7 +8,7 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 // var db = mongojs('mongodb://ds143717.mlab.com:43717/shubham', ['users']);
-var collections = ["users", "blog"]
+var collections = ["users", "blog", "comments"]
 
 var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', collections)
 
