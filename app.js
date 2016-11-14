@@ -269,7 +269,7 @@ app.get('/users/dislike/:id', function(req, res){
 
 app.get('/blog/getcomment/:id', function(req, res){
     console.log("In get comment method: "+req.params.id);
-  db.comments.find(function (err, docs) {
+  db.comments.find({ blogid: req.params.id}, function (err, docs) {
      res.send(docs);
   });
 });
