@@ -96,7 +96,7 @@ and is wrapped around the whole page content, except for the footer in this exam
       <h5>Posted by: <%= blog.name %>,<br> 
       <h5>Blog category: <%= blog.category %>,<br> 
       <span class="w3-opacity"><%= blog.date %></span></h5>
-
+      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fjava-nodejs-blog.herokuapp.com%2Fview%2Fblog%2F<%= blog._id%>&layout=button_count&size=large&mobile_iframe=true&appId=298310910569242&width=69&height=20" width="89" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br>
       <span class="w3-opacity">
 	      Posted from GPS: &nbsp;	&nbsp;&nbsp;	&nbsp;<a type="button" id="mapb" href="#popup1" onclick="init_map(<%= blog.lat %>,<%= blog.long %>,'<h1><%= blog.title %></h1><h3> blog is posted from this location</h3>')"><img src="/images/mappin.jpg" width="22" height="32"></a>
       </span>
