@@ -526,7 +526,7 @@ app.post('/send',function(req,res){
   var lat = req.body.lat;
   var signature = "Thank you,<br>Shubham Yeole,<br>Full Stack Developer,<br>Phone: +1(201) 887-5323<br>";
   var text1 = "Hello "+email+"<br>";
-  var text2 = "Thank you for contacting me. I appriciate your time for reviewing my blog<br><br>";
+  var text2 = "Thank you for contacting me. I appreciate your time for reviewing my blog<br><br>";
   var text3 = "My name is Shubham Yeole. I am full stack developer from Pace University Computer Sciece major and I am actively seeking full time opprtunity in software development position. I have successfully received your email on shubham20.yeole@gmail.com and will reply you back as soon as possible";
   var result = text1 + " "+text2+" "+text3;
   var emailBody = '<div><div style="background-color: #3B2F63; color: #b0abc0; padding-top: 5%; padding-left: 2%; padding-right: 2%; padding-bottom: 2%; font-size: 1.5em;">Check out my profile on <div style="color: #d7d5df; font-size: 1.5em;"><br><a style="color: #d7d5df;" href="https://www.linkedin.com/in/shubhamyeole">LinkedIn</a><br><a style="color: #d7d5df;" href="https://www.facebook.com/sy06736n">Facebook</a><br><a style="color: #d7d5df;" href="http://stackoverflow.com/users/5451749/shubham-yeole">StackOverflow</a><br><a style="color: #d7d5df;" href="https://github.com/shubham20yeole">GitHub</a></div><br><br><div style="padding: 3%; background-color: #d7d5df; color: #3B2F63;">'+result+'<br><br></div><p style="font-weight: bold;">'+signature+'</p><br><br><div style="padding: 2%; background-color: white; color: black;">&copy; 2016 java-nodejs-blog.herokuapp.com. All Rights Reserved, Whatever That Means.</div></div></div>';
