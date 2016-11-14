@@ -130,7 +130,9 @@ and is wrapped around the whole page content, except for the footer in this exam
       <h5>Posted by: <%= blog.name %>,<br> 
       <h5>Blog category: <%= blog.category %>,<br> 
       <span class="w3-opacity"><%= blog.date %></span></h5>
-      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fjava-nodejs-blog.herokuapp.com%2Fview%2Fblog%2F<%= blog._id%>&layout=button_count&size=large&mobile_iframe=true&appId=298310910569242&width=69&height=20" width="89" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br>
+      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fjava-nodejs-blog.herokuapp.com%2Fview%2Fblog%2F<%= blog._id%>&layout=button_count&size=small&mobile_iframe=true&appId=298310910569242&width=69&height=20" width="89" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+      <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script><br>
+<script type="IN/Share" data-url="https://java-nodejs-blog.herokuapp.com/view/blog/<%= blog._id%>" data-counter="right"></script><br>
       <span class="w3-opacity">
 
      
