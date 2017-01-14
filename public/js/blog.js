@@ -78,6 +78,15 @@ $(document).on("change","#category",function() {
         $('#showcategory').text("Category: "+$(this).val());
     });
 
+$(document).on("click","#addtagbutton",function() { 
+        var addtag = "<button>"+$("#addtags").val()+"</button>";
+        
+        var tags = $('#tags').val();
+        $('#tags').val(tags+" "+addtag);
+        $("#addtags").val("");
+        $('#showtags').append("<button>"+addtag+"</button>");
+    });
+
  function get_numbers(input) {
     return input.match(/[0-9]+/g);
 }

@@ -102,6 +102,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     <input type="hidden" name="like" id="like" VALUE="0">
     <input type="hidden" name="dislike" id="dislike" VALUE="0">
     <input type="hidden" name="views" id="views" VALUE="0">
+    <input type="text" name="tags" id="tags" VALUE="">
     <input type="hidden" name="long" id="long" VALUE="">
     <input type="hidden" name="lat" id="lat" VALUE="">
     <textarea style="display:none;" rows="4" cols="43" name="blogdata" id="blogdata" ></textarea>
@@ -122,10 +123,12 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
   </div>
 </div>
+
 <div id="previewSample">
-<h1 id="lookslikemsg">Your blog will look like this</h1>
+<h1 id="lookslikemsg">Your blog will look like this</h1><input type="text" id="addtags" VALUE=""><button id="addtagbutton">Add</button>
 <h2 id="showtitle"></h2>
 <h2 id="showcategory"></h2>
+<p id="showtags"></p>
  
 
     <div id="sample"></div>
@@ -184,7 +187,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 
  </center>
 </footer>
-
+<input type="hidden" id="longLatCurrenttask" value="BB-POST-BLOG">
+  <script type="text/javascript" src="../js/navigator.js"></script>
 </body>
 </html>
 

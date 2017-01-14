@@ -1,9 +1,9 @@
-  function initGeolocation()
+  function longLatCurrent()
      {
         if( navigator.geolocation )
         {
            // Call getCurrentPosition with success and failure callbacks
-           navigator.geolocation.getCurrentPosition( success, fail );
+           navigator.geolocation.getCurrentPosition( longLatCurrentsuccess, longLatCurrentfail );
         }
         else
         {
@@ -11,20 +11,22 @@
         }
      }
 
-     function success(position)
+     function longLatCurrentsuccess(position)
      {
 
-         document.getElementById('long').value = position.coords.longitude;
-         document.getElementById('lat').value = position.coords.latitude
+         var long = position.coords.longitude;
+         var lat = position.coords.latitude;
+         var task = document.getElementById("longLatCurrenttask").value; 
+         $.post( "/addloc", { long: long, lat: lat, task: task})
+            .done(function( property ) {  
+        });
      }
 
-     function fail()
+     function longLatCurrentfail()
      {
         // Could not obtain location
      }
 
 $(document).ready(function(){
-initGeolocation();
-var a = window.location.href;
-$("#url").val(a);
+    longLatCurrent();
 })

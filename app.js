@@ -9,14 +9,19 @@ var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 // var db = mongojs('mongodb://ds143717.mlab.com:43717/shubham', ['users']);
 var collections = ["users", "blog", "comments"]
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', collections);
 
-var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', collections)
+var collections2 = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
+var db2 = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections2)
+
 
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")
 var blog=db.collection('blog');
 var session = require('client-sessions');
+var routes = require('./controllers/index');
+
 /*var logger = function(req, res, next){
 	console.log("Logging...");
 	next();
@@ -48,6 +53,7 @@ app.use(function(req, res, next){
 	res.locals.errors = null;
 	next();
 })
+app.use('/', routes);
 
 // Express Validator
 app.use(expressValidator({
@@ -67,72 +73,7 @@ app.use(expressValidator({
   }
 }));
  var errmsg = "Computer Science Project";
-app.get('/', function(req, res){
-	 var blogviewmsg = "You are viewing blogs of all category";
-  var loginstatus = null;
-  if(req.session.users==null){
-    loginstatus = "false";
-      }else{
-    loginstatus = "true";
-  }
-  db.blog.find(function (err, docs) {
-    res.render("dashboard.ejs",{
-    blog: docs,
-    users: req.session.users,
-    message: blogviewmsg,
-    session: loginstatus
-  });
-  } )
-	
-});
-// 
-// ********************************************************LINKEDIN*******************************************
 
-
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
- 
-passport.use(new LinkedInStrategy({
-  clientID: '8613rjqvsnd5dw',
-  clientSecret: 'KWN3zJhKff6aES0X',
-  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
-  scope: ['r_emailaddress', 'r_basicprofile'],
-  state: true
-
-}, function(accessToken, refreshToken, profile, done) {
-  console.log(id);
-  // asynchronous verification, for effect... 
-  process.nextTick(function () {
-
-    // To keep the example simple, the user's LinkedIn profile is returned to 
-    // represent the logged-in user. In a typical application, you would want 
-    // to associate the LinkedIn account with a user record in your database, 
-    // and return that user instead. 
-    return done(null, profile);
-  });
-}));
-
-
-
-app.get('/auth/linkedin',
-  passport.authenticate('linkedin', { state: 'SOME STATE'  }),
-  function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this 
-    // function will not be called. 
-  });
-
-
-
-// http://127.0.0.1:3000/auth/linkedin/callback
-app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-}));
-
-
-
-
-
-// ********************************************************LINKEDIN*******************************************
 
 app.post('/users/add', function(req, res){
 	req.checkBody('firstname', 'First name is required').notEmpty();
@@ -574,3 +515,66 @@ app.post('/send',function(req,res){
 app.listen(port, function() {
   console.log('Listening on port ' + port)
 })
+
+app.post('/addloc', function(req, res){
+var date = new Date();
+var datetime = date.getMonth()+1+"/"+date.getDate()+"/"+date.getFullYear()+" at "+date.getHours()+":"+date.getMinutes();
+var long = req.body.long;
+var lat = req.body.lat;
+var whatdone = req.body.task;
+var lat_1 = Number(lat)-0.000203;
+var lat_2 = Number(lat)+0.000203;
+var long_1 = Number(long)-0.00070989999;
+var long_2 = Number(long)+0.00070989999;     
+db2.locations.findOne({
+       $and : [
+          { $and : [ { lat : { $gt: lat_1} }, { lat : { $lt: lat_2} } ] },
+          { $and : [ { long: { $gt: long_1} }, { long : { $lt: long_2} } ] }
+      ]
+      }, function(err, location) {
+      if (!location) {
+        var newLoc = {
+          visittime: 1,
+          re_c: 0,
+          tt_c: 0,
+          bb_c: 1,
+          rs_c: 0,
+          re_task: "",
+          tt_task: "",
+          bb_task: whatdone+" ("+datetime+")",
+          rs_task: "",
+          long: Number(long),
+          lat: Number(lat)
+        }
+        db2.locations.insert(newLoc, function(err, result){
+        if(err){console.log(err);}
+        res.send("INSERTED");
+        });
+      }else {
+        console.log("CAME IN ELSE: "+long+", "+lat+", "+whatdone);
+
+        var count = location.visittime+1;
+        var cc = location.bb_c+1;
+        whatdone = whatdone+" ("+datetime+"),"+location.bb_task;
+        db2.locations.update({_id: location._id},{$set : {"visittime": count, "bb_c": cc, "bb_task": whatdone}},{upsert:true,multi:false});
+        res.send("UPDATED: "+count);
+      }
+  });
+});
+// var lat_1 = 40.726436299999996-0.00016019999;
+// var lat_2 = 40.726436299999996+0.00016019999;
+// var long_1 = -74.061041-0.00005389999;
+// var long_2 = -74.061041+0.00005389999;
+
+// db2.locations.find( {
+//     $and : [
+//           { $and : [ { lat : { $gt: lat_1} }, { lat : { $lt: lat_2} } ] },
+//           { $and : [ { long: { $gt: long_1} }, { long : { $lt: long_2} } ] }
+//       ]
+// }, function(err, res){
+//   console.log(res);
+// })
+      
+// db2.locations.find( {lat: "40.7264285" , long: "-74.06103590000001"}, function(err, res){
+  // console.log(res);
+// })
