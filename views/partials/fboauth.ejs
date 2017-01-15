@@ -72,9 +72,8 @@ function checkLoginState() {
  
  //https://graph.facebook.com/'response.id'/picture?width=930&type=large&access_token='at
  
-           $("#test").val('https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
- 
-     $('.avatar1').attr('src','https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
+$("#test").val('https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
+$('.avatar1').attr('src','https://graph.facebook.com/'+response.id+'/picture?width=930&type=large&access_token='+at);
  
    JSON.stringify(response);
 });
