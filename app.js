@@ -147,6 +147,35 @@ app.post('/users/add', function(req, res){
   });
 });
 
+app.post('/loginwithfacebook', function(req, res){
+var datetime = new Date();
+ db.users.findOne({ email: req.body.email }, function(err, users) {
+    if (!users) {      
+         var newUser = {
+          firstname: req.body.firstname,
+          lastname: req.body.firstname,
+          email: req.body.email,
+          phone: req.body.phone,
+          gender: 'male',
+          date: datetime,
+          website: req.body.website,
+          password: "password",
+          gender: 'male',
+          photo: req.body.photo,
+          type: 'user',
+        }
+        db.users.insert(newUser, function(err, result){
+          if(err){console.log(err);}
+          req.session.users = result;
+          res.redirect("/blog");
+        });
+     } else {
+        req.session.users = users;
+        res.redirect("/blog");
+      }
+  });
+});
+
 app.get('/users/delete/:id', function(req, res){
   // db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
       res.send(req.params.id+" Test");
