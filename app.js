@@ -1,6 +1,6 @@
 var express = require('express');
 var SparkPost = require('sparkpost');
-var sp = new SparkPost('***********');
+var sp = new SparkPost('9bf6b6d7079252cab943971ff90c08cc3a9cee0d');
 var port = process.env.PORT || 3000
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -8,9 +8,9 @@ var expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var mongodb = require('mongodb')
 var collections = ["users", "blog", "comments"]
-var db = mongojs('mongodb://***********:***********@***********.mlab.com:***********/***********', collections);
+var db = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds143717.mlab.com:43717/shubham', collections);
 var collections2 = ["users", "blog", "comments", "property", "images", "notification", "bookmark", "messages","timetable", "timetablecategory", "timetablequestion", "locations"]
-var db2 = mongojs('mongodb://***********:***********@***********.mlab.com:***********/***********', collections2)
+var db2 = mongojs('mongodb://shubham20.yeole:shubham20.yeole@ds163387.mlab.com:63387/paceteam3', collections2)
 var nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport")
 var smtpTransport = nodemailer.createTransport(smtpTransport({
@@ -19,9 +19,10 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
     port: 587,
     auth : {
         user : "shubham20.yeole@gmail.com",
-        pass : "***********"
+        pass : "Shubham4194"
     }
 }));
+
 var app = express();
 var ObjectId = mongojs.ObjectId;
 var passport = require("passport")

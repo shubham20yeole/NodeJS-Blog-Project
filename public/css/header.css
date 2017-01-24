@@ -48,10 +48,12 @@ div#abtmecnt {
 }
 
 .dropdown {
-    position: relative;
+    position: fixed;
     display: inline-block;
 }
 
+.right{right: 0;}
+.left{left: 0;}
 .dropdown-content {
     display: none;
     position: absolute;
@@ -75,5 +77,5 @@ div#abtmecnt {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: black;
 }
